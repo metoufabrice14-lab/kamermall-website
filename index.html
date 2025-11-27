@@ -1,547 +1,577 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kamermall - Marketplace 100% Camerounaise</title>
-<!-- Font Awesome pour les icônes -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<!-- Styles CSS -->
-<style>
-/* Votre CSS fourni */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamermall - Marketplace 100% Camerounaise</title>
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Base CSS (optimisée et consolidée) */
+    :root {
+      --red: #e60000;
+      --bg: #f8f8f8;
+      --text: #333;
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8;
-  color: #333;
-}
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: Arial, sans-serif; color: var(--text); background: var(--bg); }
 
-.announcement-bar {
-  background-color: #e60000;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-  font-weight: bold;
-}
+    .announcement-bar {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: bold;
+    }
 
-header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 10;
-}
+    header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,.1); position: sticky; top: 0; z-index: 10; }
 
-.header-top, .header-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
+    .header-top, .header-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #000;
-}
+    .logo { display: flex; align-items: center; text-decoration: none; color: #000; }
+    .logo-icon { font-size: 40px; color: var(--red); margin-right: 10px; }
+    .logo-text { font-size: 22px; font-weight: bold; }
+    .logo-tagline { font-size: 12px; color: #555; }
 
-.logo-icon {
-  font-size: 40px;
-  margin-right: 10px;
-  color: #e60000;
-}
+    .contact-info { display: flex; gap: 14px; }
+    .contact-item { display: inline-flex; align-items: center; text-decoration: none; color: #333; font-size: 13px; }
+    .contact-item i { margin-right: 6px; color: var(--red); }
 
-.logo-text {
-  font-size: 24px;
-  font-weight: bold;
-}
+    .user-actions { display: flex; gap: 16px; align-items: center; }
+    .action-btn { display: inline-flex; align-items: center; text-decoration: none; color: #333; font-size: 13px; }
 
-.logo-tagline {
-  font-size: 12px;
-  color: #555;
-}
+    .action-btn i { margin-right: 6px; font-size: 16px; }
 
-.contact-info {
-  display: flex;
-  gap: 15px;
-}
+    .search-container { display: flex; align-items: center; gap: 8px; }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
+    .search-box {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      min-width: 260px;
+      background: #fff;
+    }
 
-.contact-item i {
-  margin-right: 8px;
-  color: #e60000;
-}
+    .search-btn {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-.header-bottom {
-  justify-content: space-between;
-}
+    .hamburger { display: none; flex-direction: column; cursor: pointer; width: 30px; height: 25px; justify-content: space-between; }
+    .hamburger span { display: block; height: 3px; background: #333; border-radius: 2px; transition: 0.3s; }
 
-.user-actions {
-  display: flex;
-  gap: 20px;
-}
+    nav { background: #fff; }
 
-.action-btn {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
+    .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; align-items: center; }
+    .nav-item a { text-decoration: none; color: #333; padding: 10px 12px; display: flex; align-items: center; gap: 6px; }
+    .nav-item a:hover { background: #f0f0f0; border-radius: 6px; }
 
-.action-btn i {
-  margin-right: 8px;
-  font-size: 18px;
-}
+    /* Modale/overlay pour le mobile */
+    @media (max-width: 768px) {
+      .header-bottom { flex-wrap: wrap; gap: 10px; align-items: center; }
+      .search-box { width: 100%; min-width: 0; }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+      .hamburger { display: flex; }
 
-.search-box {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+      nav { position: fixed; top: 0; right: -100%; width: 260px; height: 100%; flex-direction: column; padding-top: 60px; transition: right .3s; z-index: 30; border-left: 1px solid #eee; }
+      nav.active { right: 0; }
+      .menu-overlay { display: none; }
 
-.search-btn {
-  background-color: #e60000;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-}
+      .menu-overlay.active { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.5); z-index: 20; }
+    }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  width: 30px;
-  height: 25px;
-  justify-content: space-between;
-}
+    /* Sections */
+    .page-section { display: none; padding: 40px 20px; }
+    .page-section.active { display: block; }
 
-.hamburger span {
-  display: block;
-  height: 3px;
-  background-color: #333;
-  border-radius: 2px;
-  transition: 0.3s;
-}
+    /* Catégories et produits */
+    .categories { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; }
+    .category-card {
+      background: #fff; border-radius: 10px; padding: 18px; width: calc(25% - 15px);
+      text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.08); min-width: 180px;
+      transition: transform .2s;
+    }
+    .category-card:hover { transform: translateY(-3px); }
+    .category-card i { font-size: 28px; color: var(--red); margin-bottom: 6px; display: block; }
+    .category-card h3 { font-size: 14px; margin: 0; }
 
-/* Navigation styles */
-nav {
-  background-color: #fff;
-  display: none;
-}
+    .products-controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 10px 0 20px; flex-wrap: wrap; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
 
-.nav-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-}
+    .product-card {
+      background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      display: flex; flex-direction: column; align-items: stretch;
+    }
+    .product-image { height: 120px; display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 8px; margin-bottom: 8px; }
+    .product-image i { font-size: 48px; color: var(--red); }
+    .product-title { font-weight: bold; font-size: 15px; margin: 6px 0; }
+    .product-price { color: #333; font-weight: bold; margin: 4px 0 8px; }
+    .btn { padding: 8px 10px; border-radius: 6px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
+    .btn.primary { background: var(--red); color: #fff; border: none; }
+    .btn.secondary { background: #f0f0f0; }
 
-.nav-item a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  padding: 10px 15px;
-  transition: background 0.3s;
-}
+    /* Panier mini */
+    .cart-indicator { background: var(--red); color: #fff; border-radius: 999px; padding: 2px 8px; font-size: 12px; }
 
-.nav-item a:hover {
-  background-color: #f0f0f0;
-}
+    /* Modal paiement (MoMo / OM) */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 40; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: #fff; border-radius: 12px; width: min(480px, 90%); padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+    .modal h3 { margin-top: 0; }
+    .payment-option { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; }
+    .payment-option.active { border-color: var(--red); background: #fff6f6; }
+    .payment-icon { font-size: 22px; color: var(--red); width: 40px; text-align: center; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
 
-.nav-item i {
-  margin-right: 8px;
-}
+    /* Footer */
+    footer { background: #222; color: #ccc; padding: 40px 20px; }
+    .footer-content { display: flex; flex-wrap: wrap; gap: 20px; }
+    .footer-column { flex: 1; min-width: 200px; }
+    .footer-column h3 { color: #fff; margin-bottom: 12px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { color: #ccc; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+    .social-links { display: flex; gap: 10px; margin-top: 6px; }
+    .social-link { color: #ccc; font-size: 20px; }
+    .footer-bottom { text-align: center; margin-top: 20px; font-size: 13px; color: #777; }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .header-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .search-container {
-    width: 100%;
-    margin-top: 10px;
-  }
-  .search-box {
-    width: 70%;
-  }
-  .hamburger {
-    display: flex;
-  }
-  nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 250px;
-    height: 100%;
-    background-color: #fff;
-    flex-direction: column;
-    padding-top: 60px;
-    transition: right 0.3s;
-    z-index: 20;
-  }
-  nav.active {
-    right: 0;
-  }
-  .menu-overlay {
-    display: none;
-  }
-  .menu-overlay.active {
-    display: block;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 15;
-  }
-}
-/* Sections */
-.page-section {
-  display: none;
-  padding: 40px 20px;
-}
-.page-section.active {
-  display: block;
-}
+    /* No results message */
+    .no-results { display: none; padding: 12px; color: #666; }
+    .no-results.active { display: block; }
 
-/* Pied de page */
-footer {
-  background-color: #222;
-  color: #ccc;
-  padding: 40px 20px;
-}
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.footer-column {
-  flex: 1;
-  min-width: 200px;
-}
-.footer-column h3 {
-  color: #fff;
-  margin-bottom: 15px;
-}
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-.footer-links li {
-  margin-bottom: 10px;
-}
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-}
-.footer-links a:hover {
-  text-decoration: underline;
-}
-.social-links {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-.social-link {
-  color: #ccc;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-.social-link:hover {
-  color: #fff;
-}
-.footer-bottom {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #777;
-}
-
-/* Formulaire newsletter */
-.newsletter-form {
-  display: flex;
-  margin-top: 10px;
-}
-.newsletter-input {
-  flex: 1;
-  padding: 8px 10px;
-  border: 1px solid #555;
-  border-radius: 4px 0 0 4px;
-}
-.newsletter-btn {
-  background-color: #e60000;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 0 4px 4px 0;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Categories section style */
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-}
-.category-card {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  width: calc(25% - 20px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s;
-}
-.category-card:hover {
-  transform: translateY(-5px);
-}
-.category-card i {
-  font-size: 40px;
-  margin-bottom: 10px;
-  color: #e60000;
-}
-</style>
+  </style>
 </head>
 <body>
-<!-- Bar d'annonce -->
-<div class="announcement-bar">
-  Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande &gt; 10.000 FCFA
-</div>
+  <div class="announcement-bar">
+    Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande > 10.000 FCFA
+  </div>
 
-<!-- En-tête -->
-<header>
-  <div class="container">
-    <!-- Top header -->
-    <div class="header-top">
-      <a href="#home" class="logo">
+  <!-- En-tête -->
+  <header>
+    <div class="container header-top">
+      <a href="#home" class="logo" aria-label="Kamermall Accueil">
         <i class="fas fa-shopping-bag logo-icon"></i>
         <div>
           <div class="logo-text">KAMERMALL</div>
           <div class="logo-tagline">Marketplace 100% Camerounaise</div>
         </div>
       </a>
-      <!-- Contact -->
-      <div class="contact-info">
-        <a href="tel:622125874" class="contact-item">
-          <i class="fas fa-phone"></i> <span>+237 622 125 874</span>
-        </a>
-        <a href="mailto:contact@kamermall.cm" class="contact-item">
-          <i class="fas fa-envelope"></i> <span>contact@kamermall.cm</span>
-        </a>
-      </div>
-    </div>
-    <!-- Bottom header -->
-    <div class="header-bottom">
-      <!-- Actions utilisateur -->
-      <div class="user-actions">
-        <a href="#account" class="action-btn">
-          <i class="fas fa-user"></i> <span>Mon Compte</span>
-        </a>
-        <a href="#favorites" class="action-btn">
-          <i class="fas fa-heart"></i> <span>Favoris</span>
-        </a>
-        <a href="#cart" class="action-btn">
-          <i class="fas fa-shopping-cart"></i> <span>Panier (0)</span>
-        </a>
-      </div>
-      <!-- Barre de recherche -->
-      <div class="search-container">
-        <input type="text" class="search-box" placeholder="Que recherchez-vous ?" />
-        <button class="search-btn">
+
+      <!-- Recherche + actions -->
+      <div class="search-container" aria-label="Recherche principale">
+        <input id="search-input" class="search-box" type="text" placeholder="Rechercher des produits..." />
+        <button id="search-btn" class="search-btn" aria-label="Lancer la recherche">
           <i class="fas fa-search"></i>
         </button>
       </div>
-      <!-- Menu hamburger -->
-      <div class="hamburger" tabindex="0" role="button" aria-label="Menu" aria-pressed="false">
-        <span></span>
-        <span></span>
-        <span></span>
+
+      <div class="user-actions" aria-label="Actions utilisateur">
+        <a href="#account" class="action-btn"><i class="fas fa-user"></i> Mon Compte</a>
+        <a href="#favorites" class="action-btn"><i class="fas fa-heart"></i> Favoris</a>
+        <button id="checkout-trigger" class="action-btn" aria-label="Payer">
+          <i class="fas fa-credit-card"></i> Payer au Panier <span id="cart-count" class="cart-indicator" style="margin-left:6px; display:none;">0</span>
+        </button>
+      </div>
+
+      <div class="hamburger" id="hamburger" tabindex="0" role="button" aria-label="Menu" aria-pressed="false">
+        <span></span><span></span><span></span>
       </div>
     </div>
-  </div>
-</header>
 
-<!-- Navigation -->
-<nav>
-  <div class="container">
-    <ul class="nav-menu">
-      <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
-      <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-tags"></i> Catégories</a></li>
-      <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
-      <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
-      <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
-      <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
-      <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
-    </ul>
-  </div>
-</nav>
+    <!-- Navigation -->
+    <nav id="main-nav" aria-label="Menu principal" class="nav">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
+        <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-tags"></i> Catégories</a></li>
+        <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
+        <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
+        <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
+      </ul>
+    </nav>
+    <div id="overlay" class="menu-overlay" aria-hidden="true"></div>
+  </header>
 
-<!-- Overlay menu -->
-<div class="menu-overlay"></div>
+  <!-- Sections -->
+  <main>
+    <section id="home" class="page-section active" aria-labelledby="home-title">
+      <h1 id="home-title">Bienvenue sur Kamermall</h1>
+      <p>Marketplace 100% Camerounaise: achetez local, soutenez les vendeurs locaux.</p>
+    </section>
 
-<!-- Sections principales -->
-<div id="home" class="page-section active">
-  <h1>Bienvenue sur Kamermall</h1>
-</div>
-<div id="categories" class="page-section">
-  <h2>Nos Catégories</h2>
-  <div class="categories">
-    <div class="category-card">
-      <i class="fas fa-laptop"></i>
-      <h3>Électronique</h3>
-    </div>
-    <div class="category-card">
-      <i class="fas fa-tshirt"></i>
-      <h3>Vêtements</h3>
-    </div>
-    <div class="category-card">
-      <i class="fas fa-home"></i>
-      <h3>Maison</h3>
-    </div>
-    <div class="category-card">
-      <i class="fas fa-car"></i>
-      <h3>Automobile</h3>
-    </div>
-    <!-- Ajoutez d'autres catégories si besoin -->
-  </div>
-</div>
-<div id="products" class="page-section">
-  <h2>Nos Produits</h2>
-</div>
-<!-- Ajoutez d'autres sections si besoin -->
+    <section id="categories" class="page-section" aria-labelledby="categories-title">
+      <h2 id="categories-title">Nos Catégories</h2>
+      <div class="categories" role="list">
+        <div class="category-card" role="listitem">
+          <i class="fas fa-laptop"></i>
+          <h3>Électronique</h3>
+        </div>
+        <div class="category-card" role="listitem">
+          <i class="fas fa-tshirt"></i>
+          <h3>Vêtements</h3>
+        </div>
+        <div class="category-card" role="listitem">
+          <i class="fas fa-home"></i>
+          <h3>Maison</h3>
+        </div>
+        <div class="category-card" role="listitem">
+          <i class="fas fa-car"></i>
+          <h3>Automobile</h3>
+        </div>
+      </div>
+    </section>
 
-<!-- Pied de page -->
-<footer>
-  <div class="footer-content">
-    <!-- Colonne 1 -->
-    <div class="footer-column">
-      <h3>KAMERMALL</h3>
-      <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
-      <div class="social-links">
-        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+    <section id="products" class="page-section" aria-labelledby="products-title">
+      <h2 id="products-title">Nos Produits</h2>
+
+      <div class="products-controls" aria-label="Contrôles produits">
+        <span>Résultats: <strong id="result-count">0</strong></span>
+        <span id="no-results" class="no-results" aria-live="polite">Aucun produit ne correspond à votre recherche.</span>
+      </div>
+
+      <div id="product-grid" class="products-grid">
+        <!-- Exemple de produits -->
+        <div class="product-card" data-title="Smartphone X Pro" data-category="Électronique" data-tags="smartphone,phone">
+          <div class="product-image"><i class="fas fa-mobile-screen-button"></i></div>
+          <div class="product-title">Smartphone X Pro</div>
+          <div class="product-price">29 990 FCFA</div>
+          <button class="btn add-to-cart" data-id="p1" aria-label="Ajouter Smartphone X Pro au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+
+        <div class="product-card" data-title="T-shirt Casual Masculin" data-category="Vêtements" data-tags="vetements,tshirt">
+          <div class="product-image"><i class="fas fa-tshirt"></i></div>
+          <div class="product-title">T-shirt Casual Masculin</div>
+          <div class="product-price">5 500 FCFA</div>
+          <button class="btn add-to-cart" data-id="p2" aria-label="Ajouter T-shirt Casual au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+
+        <div class="product-card" data-title="Cafetière Express" data-category="Maison" data-tags="cafe,électroménager">
+          <div class="product-image"><i class="fas fa-coffee"></i></div>
+          <div class="product-title">Cafetière Express</div>
+          <div class="product-price">18 750 FCFA</div>
+          <button class="btn add-to-cart" data-id="p3" aria-label="Ajouter Cafetière Express au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+
+        <div class="product-card" data-title="Lampe LED Designer" data-category="Maison" data-tags="luminaire,éclairage">
+          <div class="product-image"><i class="fas fa-lightbulb"></i></div>
+          <div class="product-title">Lampe LED Designer</div>
+          <div class="product-price">3 900 FCFA</div>
+          <button class="btn add-to-cart" data-id="p4" aria-label="Ajouter Lampe LED au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+
+        <div class="product-card" data-title="Chaussures Sport Noir" data-category="Vêtements" data-tags="chaussures,sport">
+          <div class="product-image"><i class="fas fa-shoe-prints"></i></div>
+          <div class="product-title">Chaussures Sport Noir</div>
+          <div class="product-price">9 990 FCFA</div>
+          <button class="btn add-to-cart" data-id="p5" aria-label="Ajouter Chaussures Sport au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+
+        <div class="product-card" data-title="Vélo Ville 26''" data-category="Électronique" data-tags="vélo,transport">
+          <div class="product-image"><i class="fas fa-bicycle"></i></div>
+          <div class="product-title">Vélo Ville 26''</div>
+          <div class="product-price">65 000 FCFA</div>
+          <button class="btn add-to-cart" data-id="p6" aria-label="Ajouter Vélo au panier">
+            <i class="fas fa-plus"></i>Ajouter au panier
+          </button>
+        </div>
+      </div>
+      <div class="no-results" id="no-resultsMessage" aria-live="polite" style="margin-top:8px; display:none;">Aucun produit ne correspond.</div>
+    </section>
+
+    <section id="sellers" class="page-section" aria-labelledby="sellers-title">
+      <h2 id="sellers-title">Vendeurs</h2>
+      <p>Liste des vendeurs partenaires (section fictive pour démonstration).</p>
+    </section>
+
+    <section id="promotions" class="page-section" aria-labelledby="promotions-title">
+      <h2 id="promotions-title">Promotions</h2>
+      <p>Offres et réductions en cours.</p>
+    </section>
+
+    <section id="about" class="page-section" aria-labelledby="about-title">
+      <h2 id="about-title">À propos</h2>
+      <p>Kamermall est une marketplace camerounaise.</p>
+    </section>
+
+    <section id="contact" class="page-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>Nous contacter: contact@kamermall.cm</p>
+    </section>
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>KAMERMALL</h3>
+        <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Liens Rapides</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#categories">Catégories</a></li>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Service Client</h3>
+        <ul class="footer-links">
+          <li><a href="#help">Aide & FAQ</a></li>
+          <li><a href="#shipping">Livraison</a></li>
+          <li><a href="#returns">Retours</a></li>
+          <li><a href="#terms">Conditions</a></li>
+          <li><a href="#privacy">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" class="newsletter-input" placeholder="Votre email" />
+          <button type="submit" class="newsletter-btn">S'inscrire</button>
+        </form>
       </div>
     </div>
-    <!-- Colonne 2 -->
-    <div class="footer-column">
-      <h3>Liens Rapides</h3>
-      <ul class="footer-links">
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#categories">Catégories</a></li>
-        <li><a href="#products">Produits</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
     </div>
-    <!-- Colonne 3 -->
-    <div class="footer-column">
-      <h3>Service Client</h3>
-      <ul class="footer-links">
-        <li><a href="#help">Aide & FAQ</a></li>
-        <li><a href="#shipping">Livraison</a></li>
-        <li><a href="#returns">Retours</a></li>
-        <li><a href="#terms">Conditions</a></li>
-        <li><a href="#privacy">Confidentialité</a></li>
-      </ul>
-    </div>
-    <!-- Colonne 4 -->
-    <div class="footer-column">
-      <h3>Newsletter</h3>
-      <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
-      <form class="newsletter-form">
-        <input type="email" class="newsletter-input" placeholder="Votre email" />
-        <button type="submit" class="newsletter-btn">S'inscrire</button>
-      </form>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
-  </div>
-</footer>
+  </footer>
 
-<!-- Script JavaScript -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
+  <!-- Modal paiement -->
+  <div id="payment-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="Paiement">
+    <div class="modal" aria-labelledby="payment-title">
+      <h3 id="payment-title">Paiement sécurisé</h3>
+      <p>Sélectionnez votre moyen de paiement:</p>
+
+      <div id="momo-option" class="payment-option" data-method="momo" tabindex="0" role="button" aria-label="Paiement MoMo">
+        <div class="payment-icon"><i class="fab fa-mizube" aria-hidden="true" style="display:none;"></i></div>
+        <div><strong>Mobile Money (MoMo)</strong><div style="font-size:12px;color:#555;">MTN Momo / MTN ou Orange Money</div></div>
+      </div>
+
+      <div id="om-option" class="payment-option" data-method="om" tabindex="0" role="button" aria-label="Paiement Orange Money">
+        <div class="payment-icon"><i class="fab fa-cc-visa" aria-hidden="true"></i></div>
+        <div><strong>Orange Money (OM)</strong><div style="font-size:12px;color:#555;">Paiement via Orange Money</div></div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="pay-button" class="btn primary" disabled><i class="fas fa-check"></i> Confirmer le paiement</button>
+        <button id="cancel-pay" class="btn" aria-label="Annuler paiement">Annuler</button>
+      </div>
+
+      <div id="payment-status" style="margin-top:12px; font-size:14px; color:#333;"></div>
+    </div>
+  </div>
+
+  <!-- Overlay (mobile menu) -->
+  <div id="screen-overlay" class="menu-overlay" style="display:none;"></div>
+
+  <!-- Script -->
+  <script>
+    // Éléments principaux
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const productGrid = document.getElementById('product-grid');
+    const noResultsEl = document.getElementById('no-resultsMessage');
+    const resultCountEl = document.getElementById('result-count');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartCountEl = document.getElementById('cart-count');
+    const checkoutTrigger = document.getElementById('checkout-trigger');
+    const paymentModal = document.getElementById('payment-modal');
+    const overlay = document.getElementById('overlay');
+    const momoOption = document.getElementById('momo-option');
+    const omOption = document.getElementById('om-option');
+    const payButton = document.getElementById('pay-button');
+    const cancelPay = document.getElementById('cancel-pay');
+    const paymentStatus = document.getElementById('payment-status');
+    const screenOverlay = document.getElementById('screen-overlay');
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('main-nav');
     const navLinks = document.querySelectorAll('.nav-link');
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const menuOverlay = document.querySelector('.menu-overlay');
+    const overlayEl = document.getElementById('overlay');
+    const pageSections = document.querySelectorAll('.page-section');
+    let cart = [];
 
-    // Gestion du menu hamburger avec clavier
-    hamburger.setAttribute('tabindex', '0');
-    hamburger.setAttribute('role', 'button');
-    hamburger.setAttribute('aria-label', 'Menu');
-    hamburger.setAttribute('aria-pressed', 'false');
+    // Helpers: affichage/masquage sections
+    function showSection(id) {
+      pageSections.forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+    }
 
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32) {
-        e.preventDefault();
-        const isActive = hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        hamburger.setAttribute('aria-pressed', String(isActive));
+    // Recherche en live
+    function updateSearch() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      let visibleCount = 0;
+      const cards = productGrid.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const title = (card.dataset.title || '').toLowerCase();
+        const category = (card.dataset.category || '').toLowerCase();
+        const tags = (card.dataset.tags || '').toLowerCase();
+        const match = !query || title.includes(query) || category.includes(query) || tags.includes(query);
+        card.style.display = match ? 'flex' : 'none';
+        if (match) visibleCount++;
+      });
+      resultCountEl.textContent = visibleCount;
+      if (visibleCount === 0) {
+        noResultsEl.classList.add('active');
+      } else {
+        noResultsEl.classList.remove('active');
       }
+    }
+
+    // Événements de recherche
+    searchInput.addEventListener('input', updateSearch);
+    searchBtn.addEventListener('click', updateSearch);
+    // Initialisation
+    updateSearch();
+
+    // Panier: ajouter au panier
+    function addToCart(productCard) {
+      const title = productCard.dataset.title;
+      const priceText = productCard.querySelector('.product-price').textContent.trim();
+      // parse price (e.g., "29 990 FCFA")
+      const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''), 10) || 0;
+      const item = { title, price: priceValue };
+      cart.push(item);
+      // Mise à jour du compteur
+      cartCountEl.style.display = 'inline-block';
+      cartCountEl.textContent = cart.length;
+    }
+
+    addToCartButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.product-card');
+        addToCart(card);
+      });
     });
 
-    // Ouverture/fermeture avec clic
+    // Payer: ouverture modal paiement
+    function openPaymentModal() {
+      paymentStatus.textContent = '';
+      // réinitialiser sélection
+      momoOption.classList.remove('active');
+      omOption.classList.remove('active');
+      payButton.disabled = true;
+      paymentModal.classList.add('active');
+      paymentModal.setAttribute('aria-hidden', 'false');
+      overlay.style.display = 'block';
+    }
+
+    function closePaymentModal() {
+      paymentModal.classList.remove('active');
+      paymentModal.setAttribute('aria-hidden', 'true');
+      overlay.style.display = 'none';
+      screenOverlay.style.display = 'none';
+    }
+
+    // Choix paiement: MoMo ou OM
+    function selectPaymentMethod(el) {
+      momoOption.classList.remove('active');
+      omOption.classList.remove('active');
+      el.classList.add('active');
+      payButton.disabled = false;
+    }
+
+    momoOption.addEventListener('click', () => selectPaymentMethod(momoOption));
+    omOption.addEventListener('click', () => selectPaymentMethod(omOption));
+
+    // Bouton Payer
+    payButton.addEventListener('click', () => {
+      const method = (document.querySelector('.payment-option.active')?.dataset?.method) || '';
+      if (!method) return;
+      paymentStatus.textContent = `Paiement en cours via ${method.toUpperCase()}...`;
+      // Simulation
+      setTimeout(() => {
+        paymentStatus.textContent = 'Paiement réussi ! Commande confirmée.';
+        // vider panier
+        cart = [];
+        cartCountEl.style.display = 'none';
+        cartCountEl.textContent = '0';
+        closePaymentModal();
+      }, 1500);
+    });
+
+    cancelPay.addEventListener('click', () => closePaymentModal());
+
+    // Déclenchement paiement via Panier
+    checkoutTrigger.addEventListener('click', (e) => {
+      // si le panier est vide, afficher message et ne pas ouvrir
+      if (cart.length === 0) {
+        alert('Votre panier est vide. Ajoutez des articles avant de payer.');
+        return;
+      }
+      openPaymentModal();
+    });
+
+    // Menu hamburger + overlay (Mobile)
+    function toggleMobileMenu(show) {
+      if (show) {
+        mainNav.classList.add('active');
+        overlayEl.style.display = 'block';
+        overlayEl.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        hamburger.setAttribute('aria-pressed', 'true');
+      } else {
+        mainNav.classList.remove('active');
+        overlayEl.style.display = 'none';
+        overlayEl.classList.remove('active');
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    // Activer le menu sur mobile via clic
     hamburger.addEventListener('click', () => {
-      const isActive = hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-      hamburger.setAttribute('aria-pressed', String(isActive));
+      const isActive = mainNav.classList.contains('active');
+      toggleMobileMenu(!isActive);
     });
 
-    // Fermer le menu quand clic sur overlay
-    menuOverlay.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      hamburger.setAttribute('aria-pressed', 'false');
-    });
+    overlayEl.addEventListener('click', () => toggleMobileMenu(false));
 
-    // Navigation clic sur liens
+    // Navigation entre sections (clique sur le menu)
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').slice(1);
-        // Gestion de l'affichage des sections
-        document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) targetSection.classList.add('active');
-
-        // Fermer menu mobile si ouvert
-        if (navMenu.classList.contains('active')) {
-          hamburger.classList.remove('active');
-          navMenu.classList.remove('active');
-          menuOverlay.classList.remove('active');
-          hamburger.setAttribute('aria-pressed', 'false');
-        }
+        showSection(targetId);
+        // Fermer menu si ouvert sur mobile
+        if (mainNav.classList.contains('active')) toggleMobileMenu(false);
       });
     });
-  });
-</script>
+
+    // Lorsque la page démarre, afficher la section home et masquer les autres
+    showSection('home');
+  </script>
 </body>
 </html>
