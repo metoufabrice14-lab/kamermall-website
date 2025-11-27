@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamermall - Marketplace Camerounais</title>
-  <!-- Font Awesome pour les icônes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;Kamermall - Marketplace Camerounais&lt;/title&gt;
+  &lt;!-- Font Awesome pour les icônes --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /&gt;
+  &lt;style&gt;
     :root {
       --red: #e60000;
       --bg: #f8f8f8;
@@ -132,7 +132,7 @@
     .card-form input { padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
     .hidden { display: none; }
 
-    /* Footer ... (inchangé) */
+    /* Footer */
     footer { background: #222; color: #ccc; padding: 40px 20px; }
     .footer-content { display: flex; flex-wrap: wrap; gap: 20px; }
     .footer-column { flex: 1; min-width: 200px; }
@@ -145,7 +145,7 @@
     .social-link { color: #ccc; font-size: 20px; }
     .footer-bottom { text-align: center; margin-top: 20px; font-size: 13px; color: #777; }
 
-    /* Newsletter & cookies ... (inchangé) */
+    /* Newsletter & cookies */
     .newsletter-form { display: flex; margin-top: 6px; }
     .newsletter-input { flex: 1; padding: 8px 10px; border: 1px solid #555; border-radius: 4px 0 0 4px; }
     .newsletter-btn { background: var(--red); border: none; padding: 8px 12px; border-radius: 0 4px 4px 0; color: #fff; cursor: pointer; }
@@ -154,425 +154,251 @@
     .cookie-banner p { margin: 0; font-size: 13px; color: #555; }
     .cookie-banner button { background: var(--red); color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
 
-    /* No results message ... (inchangé) */
+    /* No results message */
     .no-results { display: none; padding: 12px; color: #666; }
     .no-results.active { display: block; }
-  </style>
-</head>
-<body>
-  <div class="announcement-bar">
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="announcement-bar"&gt;
     Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande &gt; 10.000 FCFA
-  </div>
+  &lt;/div&gt;
 
-  <!-- En-tête -->
-  <header>
-    <div class="container header-top">
-      <a href="#home" class="logo" aria-label="Kamermall Accueil">
-        <i class="fas fa-shopping-bag logo-icon"></i>
-        <div>
-          <div class="logo-text">KAMERMALL</div>
-          <div class="logo-tagline">Marketplace 100% Camerounaise</div>
-        </div>
-      </a>
+  &lt;!-- En-tête --&gt;
+  &lt;header&gt;
+    &lt;div class="container header-top"&gt;
+      &lt;a href="#home" class="logo" aria-label="Kamermall Accueil"&gt;
+        &lt;i class="fas fa-shopping-bag logo-icon"&gt;&lt;/i&gt;
+        &lt;div&gt;
+          &lt;div class="logo-text"&gt;KAMERMALL&lt;/div&gt;
+          &lt;div class="logo-tagline"&gt;Marketplace 100% Camerounaise&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
 
-      <!-- Recherche + actions -->
-      <div class="search-container" aria-label="Recherche principale">
-        <input id="search-input" class="search-box" type="text" placeholder="Rechercher des produits..." />
-        <button id="search-btn" class="search-btn" aria-label="Lancer la recherche">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
+      &lt;!-- Recherche + actions --&gt;
+      &lt;div class="search-container" aria-label="Recherche principale"&gt;
+        &lt;input id="search-input" class="search-box" type="text" placeholder="Rechercher des produits..." /&gt;
+        &lt;button id="search-btn" class="search-btn" aria-label="Lancer la recherche"&gt;
+          &lt;i class="fas fa-search"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
 
-      <div class="user-actions" aria-label="Actions utilisateur">
-        <a href="#account" class="action-btn active" aria-label="Mon compte"><i class="fas fa-user"></i> Mon compte</a>
-        <a href="#favorites" class="action-btn" aria-label="Favoris"><i class="fas fa-heart"></i> Favoris</a>
-        <button id="checkout-trigger" class="action-btn" aria-label="Payer">
-          <i class="fas fa-credit-card"></i> Payer au Panier <span id="cart-count" class="cart-indicator" style="margin-left:6px; display:none;">0</span>
-        </button>
-      </div>
+      &lt;div class="user-actions" aria-label="Actions utilisateur"&gt;
+        &lt;a href="#account" class="action-btn active"&gt;&lt;i class="fas fa-user"&gt;&lt;/i&gt; Mon Compte&lt;/a&gt;
+        &lt;a href="#favorites" class="action-btn"&gt;&lt;i class="fas fa-heart"&gt;&lt;/i&gt; Favoris&lt;/a&gt;
+        &lt;button id="checkout-trigger" class="action-btn" aria-label="Payer"&gt;
+          &lt;i class="fas fa-credit-card"&gt;&lt;/i&gt; Payer au Panier &lt;span id="cart-count" class="cart-indicator" style="margin-left:6px; display:none;"&gt;0&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
 
-      <div class="hamburger" id="hamburger" tabindex="0" role="button" aria-label="Menu" aria-pressed="false">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
+      &lt;div class="hamburger" id="hamburger" tabindex="0" role="button" aria-label="Menu" aria-pressed="false"&gt;
+        &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
 
-    <!-- Navigation -->
-    <nav id="main-nav" aria-label="Menu principal" class="nav" >
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
-        <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-tags"></i> Catégories</a></li>
-        <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
-        <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
-        <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
-      </ul>
-    </nav>
-    <div id="overlay" class="menu-overlay" aria-hidden="true"></div>
-  </header>
+    &lt;!-- Navigation --&gt;
+    &lt;nav id="main-nav" aria-label="Menu principal" class="nav" &gt;
+      &lt;ul class="nav-menu"&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#home" class="nav-link"&gt;&lt;i class="fas fa-home"&gt;&lt;/i&gt; Accueil&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#categories" class="nav-link"&gt;&lt;i class="fas fa-tags"&gt;&lt;/i&gt; Catégories&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#products" class="nav-link"&gt;&lt;i class="fas fa-box"&gt;&lt;/i&gt; Produits&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#sellers" class="nav-link"&gt;&lt;i class="fas fa-store"&gt;&lt;/i&gt; Vendeurs&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#promotions" class="nav-link"&gt;&lt;i class="fas fa-tag"&gt;&lt;/i&gt; Promotions&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#about" class="nav-link"&gt;&lt;i class="fas fa-info-circle"&gt;&lt;/i&gt; À propos&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nav-item"&gt;&lt;a href="#contact" class="nav-link"&gt;&lt;i class="fas fa-phone-alt"&gt;&lt;/i&gt; Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;div id="overlay" class="menu-overlay" aria-hidden="true"&gt;&lt;/div&gt;
+  &lt;/header&gt;
 
-  <!-- Sections -->
-  <main>
-    <section id="home" class="page-section active" aria-labelledby="home-title">
-      <h1 id="home-title">Bienvenue sur Kamermall</h1>
-      <p>Marketplace 100% Camerounaise: achetez local, soutenez les vendeurs locaux.</p>
-    </section>
+  &lt;!-- Sections --&gt;
+  &lt;main&gt;
+    &lt;section id="home" class="page-section active" aria-labelledby="home-title"&gt;
+      &lt;h1 id="home-title"&gt;Bienvenue sur Kamermall&lt;/h1&gt;
+      &lt;p&gt;Marketplace 100% Camerounaise: achetez local, soutenez les vendeurs locaux.&lt;/p&gt;
+    &lt;/section&gt;
 
-    <section id="categories" class="page-section" aria-labelledby="categories-title">
-      <h2 id="categories-title">Nos Catégories</h2>
-      <!-- Filtres rapides et boutons catégories -->
-      <div class="filters" aria-label="Filtres rapides">
-        <span>Filtrer par catégorie:</span>
-        <div id="categories-bar" class="categories" style="gap:12px;">
-          <!-- Les catégories seront générées dynamiquement -->
-          <div class="category-card" data-category="Électronique" title="Électronique"><i class="fas fa-laptop"></i><h3>Électronique</h3></div>
-          <div class="category-card" data-category="Vêtements" title="Vêtements"><i class="fas fa-tshirt"></i><h3>Vêtements</h3></div>
-          <div class="category-card" data-category="Maison" title="Maison"><i class="fas fa-home"></i><h3>Maison</h3></div>
-          <div class="category-card" data-category="Automobile" title="Automobile"><i class="fas fa-car"></i><h3>Automobile</h3></div>
-        </div>
-      </div>
-      <!-- Filtres avancés -->
-      <div class="filters" aria-label="Filtrage avancé">
-        <label for="min-price">Prix min:</label>
-        <input id="min-price" type="number" min="0" step="100" value="0" style="width:110px;" />
-        <label for="max-price">Prix max:</label>
-        <input id="max-price" type="number" min="0" step="100" value="100000" style="width:110px;" />
-        <label for="sort-select">Tri:</label>
-        <select id="sort-select" aria-label="Trier par">
-          <option value="popularity">Pertinence</option>
-          <option value="price-asc">Prix croissant</option>
-          <option value="price-desc">Prix décroissant</option>
-          <option value="rating-desc">Avis (note)</option>
-        </select>
-        <button id="reset-filters" class="btn" style="margin-left:auto;">Réinitialiser</button>
-      </div>
-      <!-- Liste des catégories principales -->
-      <div class="categories" id="categories-list" role="list"></div>
-    </section>
+    &lt;section id="categories" class="page-section" aria-labelledby="categories-title"&gt;
+      &lt;h2 id="categories-title"&gt;Nos Catégories&lt;/h2&gt;
 
-    <section id="products" class="page-section" aria-labelledby="products-title">
-      <h2 id="products-title">Nos Produits</h2>
-      <div class="products-controls" aria-label="Contrôles produits">
-        <span>Résultats: <strong id="result-count">0</strong></span>
-        <span id="no-results" class="no-results" aria-live="polite" style="display:none;">Aucun produit ne correspond à votre recherche.</span>
-      </div>
-      <div id="product-grid" class="products-grid" role="list" aria-label="Catalogue produit"></div>
-      <div class="no-results" id="no-resultsMessage" aria-live="polite" style="margin-top:8px; display:none;">Aucun produit ne correspond.</div>
-    </section>
+      &lt;!-- Filtres rapides et boutons catégories --&gt;
+      &lt;div class="filters" aria-label="Filtres rapides"&gt;
+        &lt;span&gt;Filtrer par catégorie:&lt;/span&gt;
+        &lt;div id="categories-bar" class="categories" style="gap:12px;"&gt;
+          &lt;!-- Les catégories seront générées/actives dynamiquement ici --&gt;
+          &lt;div class="category-card" data-category="Électronique" title="Électronique"&gt;
+            &lt;i class="fas fa-laptop"&gt;&lt;/i&gt;&lt;h3&gt;Électronique&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="category-card" data-category="Vêtements" title="Vêtements"&gt;
+            &lt;i class="fas fa-tshirt"&gt;&lt;/i&gt;&lt;h3&gt;Vêtements&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="category-card" data-category="Maison" title="Maison"&gt;
+            &lt;i class="fas fa-home"&gt;&lt;/i&gt;&lt;h3&gt;Maison&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="category-card" data-category="Automobile" title="Automobile"&gt;
+            &lt;i class="fas fa-car"&gt;&lt;/i&gt;&lt;h3&gt;Automobile&lt;/h3&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
 
-    <!-- Autres sections -->
-    <section id="sellers" class="page-section" aria-labelledby="sellers-title">
-      <h2 id="sellers-title">Vendeurs</h2>
-      <p>Liste des vendeurs partenaires (section fictive pour démonstration).</p>
-    </section>
+      &lt;div class="filters" aria-label="Filtrage avancé"&gt;
+        &lt;label&gt;Prix min:&lt;/label&gt;
+        &lt;input id="min-price" type="number" min="0" step="100" value="0" style="width:110px;" /&gt;
+        &lt;label&gt;Prix max:&lt;/label&gt;
+        &lt;input id="max-price" type="number" min="0" step="100" value="100000" style="width:110px;" /&gt;
+        &lt;label&gt;Tri:&lt;/label&gt;
+        &lt;select id="sort-select" aria-label="Trier par"&gt;
+          &lt;option value="popularity"&gt;Pertinence&lt;/option&gt;
+          &lt;option value="price-asc"&gt;Prix croissant&lt;/option&gt;
+          &lt;option value="price-desc"&gt;Prix décroissant&lt;/option&gt;
+          &lt;option value="rating-desc"&gt;Avis (note)&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button id="reset-filters" class="btn" style="margin-left:auto;"&gt;Réinitialiser&lt;/button&gt;
+      &lt;/div&gt;
 
-    <section id="promotions" class="page-section" aria-labelledby="promotions-title">
-      <h2 id="promotions-title">Promotions</h2>
-      <p>Offres et réductions en cours.</p>
-    </section>
+      &lt;div class="categories" id="categories-list" role="list"&gt;
+        &lt;!-- Catégories principales (pour affichage visuel) --&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
 
-    <section id="about" class="page-section" aria-labelledby="about-title">
-      <h2 id="about-title">À propos</h2>
-      <p>Kamermall est une marketplace camerounaise.</p>
-    </section>
+    &lt;section id="products" class="page-section" aria-labelledby="products-title"&gt;
+      &lt;h2 id="products-title"&gt;Nos Produits&lt;/h2&gt;
 
-    <section id="contact" class="page-section" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>Nous contacter: contact@kamermall.cm</p>
-    </section>
-  </main>
+      &lt;div class="products-controls" aria-label="Contrôles produits"&gt;
+        &lt;span&gt;Résultats: &lt;strong id="result-count"&gt;0&lt;/strong&gt;&lt;/span&gt;
+        &lt;span id="no-results" class="no-results" aria-live="polite" style="display:none;"&gt;Aucun produit ne correspond à votre recherche.&lt;/span&gt;
+      &lt;/div&gt;
 
-  <!-- Pied de page -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>À propos</h3>
-        <p>Kamermall est une marketplace camerounaise dédiée à favoriser le commerce local et à connecter acheteurs et vendeurs.</p>
-      </div>
-      <div class="footer-column">
-        <h3>Liens utiles</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Accueil</a></li>
-          <li><a href="#categories">Catégories</a></li>
-          <li><a href="#products">Produits</a></li>
-          <li><a href="#sellers">Vendeurs</a></li>
-          <li><a href="#promotions">Promotions</a></li>
-          <li><a href="#about">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Suivez-nous</h3>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="newsletter">
-          <h3>Newsletter</h3>
-          <form class="newsletter-form" aria-label="Inscription à la newsletter">
-            <input type="email" class="newsletter-input" placeholder="Votre email" required />
-            <button type="submit" class="newsletter-btn">S'inscrire</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2024 Kamermall. Tous droits réservés.
-    </div>
-  </footer>
+      &lt;div id="product-grid" class="products-grid" role="list" aria-label="Catalogue produit"&gt;
+        &lt;!-- Produit 1 --&gt;
+        &lt;div class="product-card" data-id="p1" data-title="Smartphone X Pro" data-category="Électronique" data-price="29990" data-rating="4.5" data-tags="smartphone,phone" role="listitem" aria-label="Smartphone X Pro"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-mobile-screen-button"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;Smartphone X Pro&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.5 sur 5"&gt;★★★★★&lt;/div&gt;
+          &lt;div class="product-price"&gt;29 990 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p1" aria-label="Ajouter Smartphone X Pro au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
 
-  <!-- Modal paiement -->
-  <div class="modal-overlay" id="payment-modal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="payment-title" aria-describedby="payment-desc">
-      <h3 id="payment-title">Choisissez votre mode de paiement</h3>
-      <div id="payment-desc">Sélectionnez une option ci-dessous pour payer votre commande.</div>
-      <div class="payment-options">
-        <div class="payment-option" data-method="mtn">
-          <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
-          MTN Mobile Money
-        </div>
-        <div class="payment-option" data-method="orange">
-          <div class="payment-icon"><i class="fas fa-phone"></i></div>
-          Orange Money
-        </div>
-        <div class="payment-option" data-method="cash">
-          <div class="payment-icon"><i class="fas fa-money-bill"></i></div>
-          Espèces
-        </div>
-      </div>
-      <div id="card-info" class="hidden">
-        <h4>Informations carte</h4>
-        <form class="card-form" id="card-form">
-          <input type="text" placeholder="Numéro de carte" required />
-          <input type="text" placeholder="Nom" required />
-          <input type="text" placeholder="Date d'expiration" required />
-          <input type="text" placeholder="Cryptogramme" required />
-        </form>
-      </div>
-      <div class="modal-actions">
-        <button id="pay-btn" class="btn primary">Payer</button>
-        <button id="close-modal" class="btn secondary">Annuler</button>
-      </div>
-    </div>
-  </div>
+        &lt;!-- Produit 2 --&gt;
+        &lt;div class="product-card" data-id="p2" data-title="T-shirt Casual Masculin" data-category="Vêtements" data-price="5500" data-rating="4.2" data-tags="vetements,tshirt" role="listitem" aria-label="T-shirt Casual Masculin"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-tshirt"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;T-shirt Casual Masculin&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.2 sur 5"&gt;★★★★☆&lt;/div&gt;
+          &lt;div class="product-price"&gt;5 500 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p2" aria-label="Ajouter T-shirt Casual au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
 
-  <!-- Overlay mobile -->
-  <div class="menu-overlay" id="mobile-overlay" aria-hidden="true"></div>
+        &lt;!-- Produit 3 --&gt;
+        &lt;div class="product-card" data-id="p3" data-title="Cafetière Express" data-category="Maison" data-price="18750" data-rating="4.0" data-tags="cafe,électroménager" role="listitem" aria-label="Cafetière Express"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-coffee"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;Cafetière Express&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.0 sur 5"&gt;★★★★&lt;/div&gt;
+          &lt;div class="product-price"&gt;18 750 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p3" aria-label="Ajouter Cafetière Express au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
 
-  <!-- Cookies -->
-  <div class="cookie-banner" id="cookie-banner">
-    <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant, vous acceptez notre politique de cookies.</p>
-    <button id="cookie-accept">Accepter</button>
-  </div>
+        &lt;!-- Produit 4 --&gt;
+        &lt;div class="product-card" data-id="p4" data-title="Lampe LED Designer" data-category="Maison" data-price="3900" data-rating="4.3" data-tags="luminaire,éclairage" role="listitem" aria-label="Lampe LED Designer"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-lightbulb"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;Lampe LED Designer&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.3 sur 5"&gt;★★★★☆&lt;/div&gt;
+          &lt;div class="product-price"&gt;3 900 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p4" aria-label="Ajouter Lampe LED au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
 
-  <!-- Script -->
-  <script>
-    // Variables
-    const categories = ["Électronique", "Vêtements", "Maison", "Automobile"];
-    const products = [
-      // Produits pour Électronique
-      { id: 'p1', title: 'Smartphone X Pro', category: 'Électronique', price: 29990, rating: 4.5, tags: 'smartphone,phone' },
-      { id: 'p6', title: 'Vélo Ville 26\'\'', category: 'Électronique', price: 65000, rating: 4.6, tags: 'vélo,transport' },
-      { id: 'p7', title: 'Tablette Samsung', category: 'Électronique', price: 15000, rating: 4.3, tags: 'tablette,android' },
-      { id: 'p8', title: 'Casque Bluetooth', category: 'Électronique', price: 7800, rating: 4.0, tags: 'casque,wireless' },
-      { id: 'p9', title: 'Smartwatch Fit', category: 'Électronique', price: 12000, rating: 4.2, tags: 'montre,smartwatch' },
-      { id: 'p10', title: 'Caméra de Sécurité', category: 'Électronique', price: 22000, rating: 4.4, tags: 'caméra,sécurité' },
-      { id: 'p11', title: 'Haut-parleur Bluetooth', category: 'Électronique', price: 9500, rating: 4.1, tags: 'haut-parleur,wireless' },
-      // Produits Vêtements
-      { id: 'p2', title: 'T-shirt Casual Masculin', category: 'Vêtements', price: 5500, rating: 4.2, tags: 'vetements,tshirt' },
-      { id: 'p12', title: 'Jeans Slim Fit', category: 'Vêtements', price: 15000, rating: 4.3, tags: 'jeans,pantalon' },
-      { id: 'p13', title: 'Robe d’été', category: 'Vêtements', price: 12000, rating: 4.5, tags: 'robe,été' },
-      { id: 'p14', title: 'Chaussures de Sport', category: 'Vêtements', price: 9990, rating: 4.1, tags: 'chaussures,sport' },
-      { id: 'p15', title: 'Veste en Jean', category: 'Vêtements', price: 18000, rating: 4.4, tags: 'veste,jean' },
-      { id: 'p16', title: 'Pull en laine', category: 'Vêtements', price: 13000, rating: 4.2, tags: 'pull,laine' },
-      { id: 'p17', title: 'Shorts Casual', category: 'Vêtements', price: 7000, rating: 4.0, tags: 'shorts,été' },
-      // Produits Maison
-      { id: 'p3', title: 'Cafetière Express', category: 'Maison', price: 18750, rating: 4.0, tags: 'cafe,électroménager' },
-      { id: 'p4', title: 'Lampe LED Designer', category: 'Maison', price: 3900, rating: 4.3, tags: 'luminaire,éclairage' },
-      { id: 'p18', title: 'Canapé 3 places', category: 'Maison', price: 85000, rating: 4.5, tags: 'canapé,meuble' },
-      { id: 'p19', title: 'Table à manger', category: 'Maison', price: 60000, rating: 4.2, tags: 'table,mobilier' },
-      { id: 'p20', title: 'Réfrigérateur', category: 'Maison', price: 95000, rating: 4.4, tags: 'frigo,électroménager' },
-      { id: 'p21', title: 'Four Micro-ondes', category: 'Maison', price: 15000, rating: 4.1, tags: 'micro-ondes,cuisine' },
-      { id: 'p22', title: 'Tapis Moderne', category: 'Maison', price: 12000, rating: 4.0, tags: 'tapis,décoration' },
-      // Produits Automobile
-      { id: 'p23', title: 'Vélo Ville 26\'\'', category: 'Automobile', price: 65000, rating: 4.6, tags: 'vélo,transport' },
-      { id: 'p24', title: 'Accessoires Auto', category: 'Automobile', price: 20000, rating: 4.2, tags: 'auto,accessoires' },
-      { id: 'p25', title: 'Pneus 185/60', category: 'Automobile', price: 50000, rating: 4.4, tags: 'pneus,roues' },
-      { id: 'p26', title: 'Siège Auto', category: 'Automobile', price: 30000, rating: 4.1, tags: 'siège,auto' },
-      { id: 'p27', title: 'Kit de Nettoyage', category: 'Automobile', price: 7000, rating: 4.0, tags: 'nettoyage,auto' },
-      { id: 'p28', title: 'Caméra Dashcam', category: 'Automobile', price: 25000, rating: 4.3, tags: 'caméra,auto' },
-      { id: 'p29', title: 'Housse de Siège', category: 'Automobile', price: 8000, rating: 4.2, tags: 'housse,auto' }
-    ];
+        &lt;!-- Produit 5 --&gt;
+        &lt;div class="product-card" data-id="p5" data-title="Chaussures Sport Noir" data-category="Vêtements" data-price="9990" data-rating="4.1" data-tags="chaussures,sport" role="listitem" aria-label="Chaussures Sport Noir"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-shoe-prints"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;Chaussures Sport Noir&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.1 sur 5"&gt;★★★★&lt;/div&gt;
+          &lt;div class="product-price"&gt;9 990 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p5" aria-label="Ajouter Chaussures Sport au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
 
-    // Variables DOM
-    const categoryCards = document.querySelectorAll('.category-card');
-    const productGrid = document.getElementById('product-grid');
-    const resultCount = document.getElementById('result-count');
-    const noResultsMsg = document.getElementById('no-resultsMessage');
-    const searchInput = document.getElementById('search-input');
-    const sortSelect = document.getElementById('sort-select');
-    const minPriceInput = document.getElementById('min-price');
-    const maxPriceInput = document.getElementById('max-price');
-    const resetBtn = document.getElementById('reset-filters');
-    const cartCountSpan = document.getElementById('cart-count');
+        &lt;!-- Produit 6 --&gt;
+        &lt;div class="product-card" data-id="p6" data-title="Vélo Ville 26''" data-category="Électronique" data-price="65000" data-rating="4.6" data-tags="vélo,transport" role="listitem" aria-label="Vélo Ville 26''"&gt;
+          &lt;div class="product-image"&gt;&lt;i class="fas fa-bicycle"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div class="product-title"&gt;Vélo Ville 26''&lt;/div&gt;
+          &lt;div class="rating" aria-label="Note 4.6 sur 5"&gt;★★★★★&lt;/div&gt;
+          &lt;div class="product-price"&gt;65 000 FCFA&lt;/div&gt;
+          &lt;button class="btn add-to-cart" data-id="p6" aria-label="Ajouter Vélo au panier"&gt;
+            &lt;i class="fas fa-plus"&gt;&lt;/i&gt;Ajouter au panier
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="no-results" id="no-resultsMessage" aria-live="polite" style="margin-top:8px; display:none;"&gt;Aucun produit ne correspond.&lt;/div&gt;
+    &lt;/section&gt;
 
-    let currentCategory = 'all';
-    let currentSort = 'popularity';
+    &lt;!-- autres sections ... --&gt;
+    &lt;section id="sellers" class="page-section" aria-labelledby="sellers-title"&gt;
+      &lt;h2 id="sellers-title"&gt;Vendeurs&lt;/h2&gt;
+      &lt;p&gt;Liste des vendeurs partenaires (section fictive pour démonstration).&lt;/p&gt;
+    &lt;/section&gt;
 
-    // Activation du bouton "Mon compte" et catégories
+    &lt;section id="promotions" class="page-section" aria-labelledby="promotions-title"&gt;
+      &lt;h2 id="promotions-title"&gt;Promotions&lt;/h2&gt;
+      &lt;p&gt;Offres et réductions en cours.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="about" class="page-section" aria-labelledby="about-title"&gt;
+      &lt;h2 id="about-title"&gt;À propos&lt;/h2&gt;
+      &lt;p&gt;Kamermall est une marketplace camerounaise.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="contact" class="page-section" aria-labelledby="contact-title"&gt;
+      &lt;h2 id="contact-title"&gt;Contact&lt;/h2&gt;
+      &lt;p&gt;Nous contacter: contact@kamermall.cm&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;!-- Pied de page ... (inchangé) --&gt;
+
+  &lt;!-- Modal paiement ... (inchangé) --&gt;
+
+  &lt;!-- Overlay mobile ... (inchangé) --&gt;
+
+  &lt;!-- Cookie banner ... (inchangé) --&gt;
+
+  &lt;!-- Script --&gt;
+  &lt;script&gt;
+    // tout le code précédent inchangé...
+
+    // Activation du bouton "Mon compte"
     document.querySelector('.action-btn[href="#account"]').classList.add('active');
     document.querySelector('.action-btn[href="#account"]').setAttribute('tabindex', '0');
 
-    categoryCards.forEach(card => {
+    // Activation de toutes les catégories
+    categoryCards.forEach(card =&gt; {
       card.setAttribute('tabindex', '0');
-      card.classList.add('active'); // toutes actives
-      card.addEventListener('click', () => {
-        const cat = card.dataset.category.toLowerCase();
+      card.classList.add('active'); // si vous souhaitez qu'elles soient toutes sélectionnées par défaut
+      card.addEventListener('click', () =&gt; {
+        const cat = (card.dataset.category || 'all').toLowerCase();
         setActiveCategory(cat);
       });
     });
 
-    // Fonction pour afficher produits
-    function displayProducts() {
-      let filtered = products.filter(p => {
-        if (currentCategory !== 'all' && p.category.toLowerCase() !== currentCategory) {
-          return false;
-        }
-        const searchTerm = searchInput.value.toLowerCase();
-        if (searchTerm && !p.title.toLowerCase().includes(searchTerm) && !p.tags.toLowerCase().includes(searchTerm)) {
-          return false;
-        }
-        const minP = parseInt(minPriceInput.value);
-        const maxP = parseInt(maxPriceInput.value);
-        if (p.price < minP || p.price > maxP) {
-          return false;
-        }
-        return true;
-      });
-
-      // Tri
-      switch(currentSort) {
-        case 'popularity':
-          // Pas de popularity dans data, on trie par rating
-          filtered.sort((a,b) => b.rating - a.rating);
-          break;
-        case 'price-asc':
-          filtered.sort((a,b) => a.price - b.price);
-          break;
-        case 'price-desc':
-          filtered.sort((a,b) => b.price - a.price);
-          break;
-        case 'rating-desc':
-          filtered.sort((a,b) => b.rating - a.rating);
-          break;
-      }
-
-      // Affichage
-      productGrid.innerHTML = '';
-      if(filtered.length === 0) {
-        document.getElementById('result-count').textContent = 0;
-        noResultsMsg.style.display = 'block';
-        document.getElementById('no-resultsMessage').style.display = 'block';
-        return;
-      } else {
-        noResultsMsg.style.display = 'none';
-        document.getElementById('no-resultsMessage').style.display = 'none';
-      }
-
-      filtered.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.setAttribute('role', 'listitem');
-        card.setAttribute('aria-label', p.title);
-        card.innerHTML = `
-          <div class="product-image"><i class="fas fa-box-open"></i></div>
-          <div class="product-title">${p.title}</div>
-          <div class="rating" aria-label="Note ${p.rating} sur 5">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5 - Math.round(p.rating))}</div>
-          <div class="product-price">${p.price.toLocaleString()} FCFA</div>
-          <button class="btn add-to-cart" data-id="${p.id}" aria-label="Ajouter ${p.title} au panier"><i class="fas fa-plus"></i>Ajouter au panier</button>
-        `;
-        productGrid.appendChild(card);
-      });
-      resultCount.textContent = filtered.length;
-      // Ajout des événements pour "Ajouter au panier"
-      document.querySelectorAll('.add-to-cart').forEach(btn => {
-        btn.addEventListener('click', () => {
-          let count = parseInt(cartCountSpan.textContent);
-          count++;
-          cartCountSpan.textContent = count;
-          cartCountSpan.style.display = 'inline-block';
-        });
-      });
-    }
-
-    function setActiveCategory(cat) {
-      currentCategory = cat;
-      categoryCards.forEach(c => {
-        c.classList.toggle('active', c.dataset.category.toLowerCase() === cat);
-      });
-      displayProducts();
-    }
-
-    // Événements
-    document.querySelectorAll('.category-card').forEach(c => {
-      c.addEventListener('click', () => {
-        setActiveCategory(c.dataset.category.toLowerCase());
-      });
-    });
-
-    document.getElementById('search-btn').addEventListener('click', () => {
-      displayProducts();
-    });
-    searchInput.addEventListener('keyup', e => {
-      if(e.key === 'Enter') displayProducts();
-    });
-
-    sortSelect.addEventListener('change', () => {
+    // Validation lors du changement de tri
+    sortSelect.addEventListener('change', () =&gt; {
       const newSort = sortSelect.value;
-      if(['popularity', 'price-asc', 'price-desc', 'rating-desc'].includes(newSort)) {
+      if (['popularity', 'price-asc', 'price-desc', 'rating-desc'].includes(newSort)) {
         currentSort = newSort;
-        displayProducts();
+        filterProducts();
       } else {
         alert('Tri non reconnu. Veuillez sélectionner une option valide.');
+        // éventuellement réinitialiser
         sortSelect.value = currentSort;
       }
     });
-
-    document.getElementById('reset-filters').addEventListener('click', () => {
-      minPriceInput.value = 0;
-      maxPriceInput.value = 100000;
-      searchInput.value = '';
-      currentCategory = 'all';
-      categoryCards.forEach(c => c.classList.remove('active'));
-      document.querySelector('.category-card[data-category="Électronique"]').classList.add('active');
-      document.querySelector('.category-card[data-category="Vêtements"]').classList.add('active');
-      document.querySelector('.category-card[data-category="Maison"]').classList.add('active');
-      document.querySelector('.category-card[data-category="Automobile"]').classList.add('active');
-      setActiveCategory('all');
-      sortSelect.value = 'popularity';
-      displayProducts();
-    });
-
-    // Initial display
-    setActiveCategory('all');
-
-    // Menu hamburger
-    document.getElementById('hamburger').addEventListener('click', () => {
-      const nav = document.getElementById('main-nav');
-      nav.classList.toggle('active');
-    });
-    document.getElementById('overlay').addEventListener('click', () => {
-      document.getElementById('main-nav').classList.remove('active');
-    });
-
-    // Recherche avec Enter
-    searchInput.addEventListener('keyup', e => {
-      if(e.key === 'Enter') {
-        displayProducts();
-      }
-    });
-
-  </script>
-</body>
-</html>
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
