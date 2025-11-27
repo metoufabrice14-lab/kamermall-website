@@ -132,7 +132,7 @@
     .card-form input { padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
     .hidden { display: none; }
 
-    /* Footer */
+    /* Footer ... (inchangé) */
     footer { background: #222; color: #ccc; padding: 40px 20px; }
     .footer-content { display: flex; flex-wrap: wrap; gap: 20px; }
     .footer-column { flex: 1; min-width: 200px; }
@@ -145,7 +145,7 @@
     .social-link { color: #ccc; font-size: 20px; }
     .footer-bottom { text-align: center; margin-top: 20px; font-size: 13px; color: #777; }
 
-    /* Newsletter & cookies */
+    /* Newsletter & cookies ... (inchangé) */
     .newsletter-form { display: flex; margin-top: 6px; }
     .newsletter-input { flex: 1; padding: 8px 10px; border: 1px solid #555; border-radius: 4px 0 0 4px; }
     .newsletter-btn { background: var(--red); border: none; padding: 8px 12px; border-radius: 0 4px 4px 0; color: #fff; cursor: pointer; }
@@ -154,14 +154,14 @@
     .cookie-banner p { margin: 0; font-size: 13px; color: #555; }
     .cookie-banner button { background: var(--red); color: #fff; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
 
-    /* No results message */
+    /* No results message ... (inchangé) */
     .no-results { display: none; padding: 12px; color: #666; }
     .no-results.active { display: block; }
   </style>
 </head>
 <body>
   <div class="announcement-bar">
-    Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande > 10.000 FCFA
+    Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande &gt; 10.000 FCFA
   </div>
 
   <!-- En-tête -->
@@ -184,8 +184,8 @@
       </div>
 
       <div class="user-actions" aria-label="Actions utilisateur">
-        <a href="#account" class="action-btn"><i class="fas fa-user"></i> Mon Compte</a>
-        <a href="#favorites" class="action-btn"><i class="fas fa-heart"></i> Favoris</a>
+        <a href="#account" class="action-btn active" aria-label="Mon compte"><i class="fas fa-user"></i> Mon compte</a>
+        <a href="#favorites" class="action-btn" aria-label="Favoris"><i class="fas fa-heart"></i> Favoris</a>
         <button id="checkout-trigger" class="action-btn" aria-label="Payer">
           <i class="fas fa-credit-card"></i> Payer au Panier <span id="cart-count" class="cart-indicator" style="margin-left:6px; display:none;">0</span>
         </button>
@@ -220,33 +220,24 @@
 
     <section id="categories" class="page-section" aria-labelledby="categories-title">
       <h2 id="categories-title">Nos Catégories</h2>
-
       <!-- Filtres rapides et boutons catégories -->
       <div class="filters" aria-label="Filtres rapides">
         <span>Filtrer par catégorie:</span>
         <div id="categories-bar" class="categories" style="gap:12px;">
-          <!-- Les catégories seront générées/actives dynamiquement ici -->
-          <div class="category-card" data-category="Électronique" title="Électronique">
-            <i class="fas fa-laptop"></i><h3>Électronique</h3>
-          </div>
-          <div class="category-card" data-category="Vêtements" title="Vêtements">
-            <i class="fas fa-tshirt"></i><h3>Vêtements</h3>
-          </div>
-          <div class="category-card" data-category="Maison" title="Maison">
-            <i class="fas fa-home"></i><h3>Maison</h3>
-          </div>
-          <div class="category-card" data-category="Automobile" title="Automobile">
-            <i class="fas fa-car"></i><h3>Automobile</h3>
-          </div>
+          <!-- Les catégories seront générées dynamiquement -->
+          <div class="category-card" data-category="Électronique" title="Électronique"><i class="fas fa-laptop"></i><h3>Électronique</h3></div>
+          <div class="category-card" data-category="Vêtements" title="Vêtements"><i class="fas fa-tshirt"></i><h3>Vêtements</h3></div>
+          <div class="category-card" data-category="Maison" title="Maison"><i class="fas fa-home"></i><h3>Maison</h3></div>
+          <div class="category-card" data-category="Automobile" title="Automobile"><i class="fas fa-car"></i><h3>Automobile</h3></div>
         </div>
       </div>
-
+      <!-- Filtres avancés -->
       <div class="filters" aria-label="Filtrage avancé">
-        <label>Prix min:</label>
+        <label for="min-price">Prix min:</label>
         <input id="min-price" type="number" min="0" step="100" value="0" style="width:110px;" />
-        <label>Prix max:</label>
+        <label for="max-price">Prix max:</label>
         <input id="max-price" type="number" min="0" step="100" value="100000" style="width:110px;" />
-        <label>Tri:</label>
+        <label for="sort-select">Tri:</label>
         <select id="sort-select" aria-label="Trier par">
           <option value="popularity">Pertinence</option>
           <option value="price-asc">Prix croissant</option>
@@ -255,90 +246,21 @@
         </select>
         <button id="reset-filters" class="btn" style="margin-left:auto;">Réinitialiser</button>
       </div>
-
-      <div class="categories" id="categories-list" role="list">
-        <!-- Catégories principales (pour affichage visuel) -->
-      </div>
+      <!-- Liste des catégories principales -->
+      <div class="categories" id="categories-list" role="list"></div>
     </section>
 
     <section id="products" class="page-section" aria-labelledby="products-title">
       <h2 id="products-title">Nos Produits</h2>
-
       <div class="products-controls" aria-label="Contrôles produits">
         <span>Résultats: <strong id="result-count">0</strong></span>
         <span id="no-results" class="no-results" aria-live="polite" style="display:none;">Aucun produit ne correspond à votre recherche.</span>
       </div>
-
-      <div id="product-grid" class="products-grid" role="list" aria-label="Catalogue produit">
-        <!-- Produit 1 -->
-        <div class="product-card" data-id="p1" data-title="Smartphone X Pro" data-category="Électronique" data-price="29990" data-rating="4.5" data-tags="smartphone,phone" role="listitem" aria-label="Smartphone X Pro">
-          <div class="product-image"><i class="fas fa-mobile-screen-button"></i></div>
-          <div class="product-title">Smartphone X Pro</div>
-          <div class="rating" aria-label="Note 4.5 sur 5">★★★★★</div>
-          <div class="product-price">29 990 FCFA</div>
-          <button class="btn add-to-cart" data-id="p1" aria-label="Ajouter Smartphone X Pro au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-
-        <!-- Produit 2 -->
-        <div class="product-card" data-id="p2" data-title="T-shirt Casual Masculin" data-category="Vêtements" data-price="5500" data-rating="4.2" data-tags="vetements,tshirt" role="listitem" aria-label="T-shirt Casual Masculin">
-          <div className="product-image"><i class="fas fa-tshirt"></i></div>
-          <div class="product-title">T-shirt Casual Masculin</div>
-          <div class="rating" aria-label="Note 4.2 sur 5">★★★★☆</div>
-          <div class="product-price">5 500 FCFA</div>
-          <button class="btn add-to-cart" data-id="p2" aria-label="Ajouter T-shirt Casual au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-
-        <!-- Produit 3 -->
-        <div class="product-card" data-id="p3" data-title="Cafetière Express" data-category="Maison" data-price="18750" data-rating="4.0" data-tags="cafe,électroménager" role="listitem" aria-label="Cafetière Express">
-          <div class="product-image"><i class="fas fa-coffee"></i></div>
-          <div class="product-title">Cafetière Express</div>
-          <div class="rating" aria-label="Note 4.0 sur 5">★★★★</div>
-          <div class="product-price">18 750 FCFA</div>
-          <button class="btn add-to-cart" data-id="p3" aria-label="Ajouter Cafetière Express au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-
-        <!-- Produit 4 -->
-        <div class="product-card" data-id="p4" data-title="Lampe LED Designer" data-category="Maison" data-price="3900" data-rating="4.3" data-tags="luminaire,éclairage" role="listitem" aria-label="Lampe LED Designer">
-          <div class="product-image"><i class="fas fa-lightbulb"></i></div>
-          <div class="product-title">Lampe LED Designer</div>
-          <div class="rating" aria-label="Note 4.3 sur 5">★★★★☆</div>
-          <div class="product-price">3 900 FCFA</div>
-          <button class="btn add-to-cart" data-id="p4" aria-label="Ajouter Lampe LED au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-
-        <!-- Produit 5 -->
-        <div class="product-card" data-id="p5" data-title="Chaussures Sport Noir" data-category="Vêtements" data-price="9990" data-rating="4.1" data-tags="chaussures,sport" role="listitem" aria-label="Chaussures Sport Noir">
-          <div class="product-image"><i class="fas fa-shoe-prints"></i></div>
-          <div class="product-title">Chaussures Sport Noir</div>
-          <div class="rating" aria-label="Note 4.1 sur 5">★★★★</div>
-          <div class="product-price">9 990 FCFA</div>
-          <button class="btn add-to-cart" data-id="p5" aria-label="Ajouter Chaussures Sport au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-
-        <!-- Produit 6 -->
-        <div class="product-card" data-id="p6" data-title="Vélo Ville 26''" data-category="Électronique" data-price="65000" data-rating="4.6" data-tags="vélo,transport" role="listitem" aria-label="Vélo Ville 26''">
-          <div class="product-image"><i class="fas fa-bicycle"></i></div>
-          <div class="product-title">Vélo Ville 26''</div>
-          <div class="rating" aria-label="Note 4.6 sur 5">★★★★★</div>
-          <div class="product-price">65 000 FCFA</div>
-          <button class="btn add-to-cart" data-id="p6" aria-label="Ajouter Vélo au panier">
-            <i class="fas fa-plus"></i>Ajouter au panier
-          </button>
-        </div>
-      </div>
+      <div id="product-grid" class="products-grid" role="list" aria-label="Catalogue produit"></div>
       <div class="no-results" id="no-resultsMessage" aria-live="polite" style="margin-top:8px; display:none;">Aucun produit ne correspond.</div>
     </section>
 
+    <!-- Autres sections -->
     <section id="sellers" class="page-section" aria-labelledby="sellers-title">
       <h2 id="sellers-title">Vendeurs</h2>
       <p>Liste des vendeurs partenaires (section fictive pour démonstration).</p>
@@ -360,526 +282,297 @@
     </section>
   </main>
 
-  <!-- PIED DE PAGE -->
+  <!-- Pied de page -->
   <footer>
     <div class="footer-content">
       <div class="footer-column">
-        <h3>KAMERMALL</h3>
-        <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-        </div>
+        <h3>À propos</h3>
+        <p>Kamermall est une marketplace camerounaise dédiée à favoriser le commerce local et à connecter acheteurs et vendeurs.</p>
       </div>
       <div class="footer-column">
-        <h3>Liens Rapides</h3>
+        <h3>Liens utiles</h3>
         <ul class="footer-links">
           <li><a href="#home">Accueil</a></li>
           <li><a href="#categories">Catégories</a></li>
           <li><a href="#products">Produits</a></li>
+          <li><a href="#sellers">Vendeurs</a></li>
+          <li><a href="#promotions">Promotions</a></li>
           <li><a href="#about">À propos</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-column">
-        <h3>Service Client</h3>
-        <ul class="footer-links">
-          <li><a href="#help">Aide & FAQ</a></li>
-          <li><a href="#shipping"> livraison</a></li>
-          <li><a href="#returns">Retours</a></li>
-          <li><a href="#terms">Conditions</a></li>
-          <li><a href="#privacy">Confidentialité</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Newsletter</h3>
-        <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
-        <form class="newsletter-form" onsubmit="return false;">
-          <input type="email" class="newsletter-input" placeholder="Votre email" />
-          <button type="submit" class="newsletter-btn">S'inscrire</button>
-        </form>
+        <h3>Suivez-nous</h3>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="newsletter">
+          <h3>Newsletter</h3>
+          <form class="newsletter-form" aria-label="Inscription à la newsletter">
+            <input type="email" class="newsletter-input" placeholder="Votre email" required />
+            <button type="submit" class="newsletter-btn">S'inscrire</button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Kamermall. Tous droits réservés.</p>
+      &copy; 2024 Kamermall. Tous droits réservés.
     </div>
   </footer>
 
   <!-- Modal paiement -->
-  <div id="payment-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="Paiement">
-    <div class="modal" aria-labelledby="payment-title">
-      <h3 id="payment-title">Paiement sécurisé</h3>
-      <p>Sélectionnez votre moyen de paiement:</p>
-
-      <div id="momo-option" class="payment-option" data-method="momo" tabindex="0" role="button" aria-label="Paiement MoMo">
-        <div class="payment-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
-        <div><strong>Mobile Money (MoMo)</strong><div style="font-size:12px;color:#555;"> MTN Momo / MTN ou Orange Money</div></div>
-      </div>
-
-      <div id="om-option" class="payment-option" data-method="om" tabindex="0" role="button" aria-label="Paiement Orange Money">
-        <div class="payment-icon"><i class="fas fa-wallet" aria-hidden="true"></i></div>
-        <div><strong>Orange Money (OM)</strong><div style="font-size:12px;color:#555;">Paiement via Orange Money</div></div>
-      </div>
-
-      <div id="card-option" class="payment-option" data-method="card" tabindex="0" role="button" aria-label="Paiement par Carte Bancaire">
-        <div class="payment-icon"><i class="fas fa-credit-card" aria-hidden="true"></i></div>
-        <div><strong>Carte Bancaire</strong><div style="font-size:12px;color:#555;">Paiement par carte (Visa/Mastercard)</div></div>
-      </div>
-
-      <div id="cod-option" class="payment-option" data-method="cod" tabindex="0" role="button" aria-label="Paiement à la livraison">
-        <div class="payment-icon"><i class="fas fa-truck" aria-hidden="true"></i></div>
-        <div><strong>Paiement à la livraison</strong><div style="font-size:12px;color:#555;">Paiement à la livraison (COD)</div></div>
-      </div>
-
-      <div id="paypal-option" class="payment-option" data-method="paypal" tabindex="0" role="button" aria-label="Paiement PayPal">
-        <div class="payment-icon"><i class="fab fa-paypal" aria-hidden="true"></i></div>
-        <div><strong>PayPal</strong><div style="font-size:12px;color:#555;">Paiement via PayPal</div></div>
-      </div>
-
-      <div id="order-summary" style="margin-top:12px; padding: 8px; border: 1px solid #eee; border-radius: 8px;">
-        <!-- Récapitulatif inséré dynamiquement -->
-      </div>
-
-      <div class="hidden" id="card-form-container" aria-live="polite" style="margin-top:10px;">
-        <div class="card-form" aria-label="formulaire carte bancaire">
-          <input id="card-number" placeholder="N° de carte" />
-          <input id="card-name" placeholder="Titulaire" />
-          <input id="card-expiry" placeholder="MM/AA" />
-          <input id="card-cvv" placeholder="CVV" />
+  <div class="modal-overlay" id="payment-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="payment-title" aria-describedby="payment-desc">
+      <h3 id="payment-title">Choisissez votre mode de paiement</h3>
+      <div id="payment-desc">Sélectionnez une option ci-dessous pour payer votre commande.</div>
+      <div class="payment-options">
+        <div class="payment-option" data-method="mtn">
+          <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
+          MTN Mobile Money
+        </div>
+        <div class="payment-option" data-method="orange">
+          <div class="payment-icon"><i class="fas fa-phone"></i></div>
+          Orange Money
+        </div>
+        <div class="payment-option" data-method="cash">
+          <div class="payment-icon"><i class="fas fa-money-bill"></i></div>
+          Espèces
         </div>
       </div>
-
-      <div class="modal-actions">
-        <button id="pay-button" class="btn primary" disabled><i class="fas fa-check"></i> Confirmer le paiement</button>
-        <button id="cancel-pay" class="btn" aria-label="Annuler paiement">Annuler</button>
+      <div id="card-info" class="hidden">
+        <h4>Informations carte</h4>
+        <form class="card-form" id="card-form">
+          <input type="text" placeholder="Numéro de carte" required />
+          <input type="text" placeholder="Nom" required />
+          <input type="text" placeholder="Date d'expiration" required />
+          <input type="text" placeholder="Cryptogramme" required />
+        </form>
       </div>
-
-      <div id="payment-status" style="margin-top:12px; font-size:14px; color:#333;"></div>
+      <div class="modal-actions">
+        <button id="pay-btn" class="btn primary">Payer</button>
+        <button id="close-modal" class="btn secondary">Annuler</button>
+      </div>
     </div>
   </div>
 
-  <!-- Overlay (mobile menu) -->
-  <div id="screen-overlay" class="menu-overlay" style="display:none;"></div>
+  <!-- Overlay mobile -->
+  <div class="menu-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
-  <!-- Cookie banner -->
+  <!-- Cookies -->
   <div class="cookie-banner" id="cookie-banner">
-    <p>Nous utilisons des cookies pour améliorer votre expérience. En poursuivant, vous acceptez notre politique de cookies.</p>
+    <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant, vous acceptez notre politique de cookies.</p>
     <button id="cookie-accept">Accepter</button>
   </div>
 
   <!-- Script -->
   <script>
-    // Éléments principaux
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
+    // Variables
+    const categories = ["Électronique", "Vêtements", "Maison", "Automobile"];
+    const products = [
+      // Produits pour Électronique
+      { id: 'p1', title: 'Smartphone X Pro', category: 'Électronique', price: 29990, rating: 4.5, tags: 'smartphone,phone' },
+      { id: 'p6', title: 'Vélo Ville 26\'\'', category: 'Électronique', price: 65000, rating: 4.6, tags: 'vélo,transport' },
+      { id: 'p7', title: 'Tablette Samsung', category: 'Électronique', price: 15000, rating: 4.3, tags: 'tablette,android' },
+      { id: 'p8', title: 'Casque Bluetooth', category: 'Électronique', price: 7800, rating: 4.0, tags: 'casque,wireless' },
+      { id: 'p9', title: 'Smartwatch Fit', category: 'Électronique', price: 12000, rating: 4.2, tags: 'montre,smartwatch' },
+      { id: 'p10', title: 'Caméra de Sécurité', category: 'Électronique', price: 22000, rating: 4.4, tags: 'caméra,sécurité' },
+      { id: 'p11', title: 'Haut-parleur Bluetooth', category: 'Électronique', price: 9500, rating: 4.1, tags: 'haut-parleur,wireless' },
+      // Produits Vêtements
+      { id: 'p2', title: 'T-shirt Casual Masculin', category: 'Vêtements', price: 5500, rating: 4.2, tags: 'vetements,tshirt' },
+      { id: 'p12', title: 'Jeans Slim Fit', category: 'Vêtements', price: 15000, rating: 4.3, tags: 'jeans,pantalon' },
+      { id: 'p13', title: 'Robe d’été', category: 'Vêtements', price: 12000, rating: 4.5, tags: 'robe,été' },
+      { id: 'p14', title: 'Chaussures de Sport', category: 'Vêtements', price: 9990, rating: 4.1, tags: 'chaussures,sport' },
+      { id: 'p15', title: 'Veste en Jean', category: 'Vêtements', price: 18000, rating: 4.4, tags: 'veste,jean' },
+      { id: 'p16', title: 'Pull en laine', category: 'Vêtements', price: 13000, rating: 4.2, tags: 'pull,laine' },
+      { id: 'p17', title: 'Shorts Casual', category: 'Vêtements', price: 7000, rating: 4.0, tags: 'shorts,été' },
+      // Produits Maison
+      { id: 'p3', title: 'Cafetière Express', category: 'Maison', price: 18750, rating: 4.0, tags: 'cafe,électroménager' },
+      { id: 'p4', title: 'Lampe LED Designer', category: 'Maison', price: 3900, rating: 4.3, tags: 'luminaire,éclairage' },
+      { id: 'p18', title: 'Canapé 3 places', category: 'Maison', price: 85000, rating: 4.5, tags: 'canapé,meuble' },
+      { id: 'p19', title: 'Table à manger', category: 'Maison', price: 60000, rating: 4.2, tags: 'table,mobilier' },
+      { id: 'p20', title: 'Réfrigérateur', category: 'Maison', price: 95000, rating: 4.4, tags: 'frigo,électroménager' },
+      { id: 'p21', title: 'Four Micro-ondes', category: 'Maison', price: 15000, rating: 4.1, tags: 'micro-ondes,cuisine' },
+      { id: 'p22', title: 'Tapis Moderne', category: 'Maison', price: 12000, rating: 4.0, tags: 'tapis,décoration' },
+      // Produits Automobile
+      { id: 'p23', title: 'Vélo Ville 26\'\'', category: 'Automobile', price: 65000, rating: 4.6, tags: 'vélo,transport' },
+      { id: 'p24', title: 'Accessoires Auto', category: 'Automobile', price: 20000, rating: 4.2, tags: 'auto,accessoires' },
+      { id: 'p25', title: 'Pneus 185/60', category: 'Automobile', price: 50000, rating: 4.4, tags: 'pneus,roues' },
+      { id: 'p26', title: 'Siège Auto', category: 'Automobile', price: 30000, rating: 4.1, tags: 'siège,auto' },
+      { id: 'p27', title: 'Kit de Nettoyage', category: 'Automobile', price: 7000, rating: 4.0, tags: 'nettoyage,auto' },
+      { id: 'p28', title: 'Caméra Dashcam', category: 'Automobile', price: 25000, rating: 4.3, tags: 'caméra,auto' },
+      { id: 'p29', title: 'Housse de Siège', category: 'Automobile', price: 8000, rating: 4.2, tags: 'housse,auto' }
+    ];
+
+    // Variables DOM
+    const categoryCards = document.querySelectorAll('.category-card');
     const productGrid = document.getElementById('product-grid');
-    const noResultsEl = document.getElementById('no-results');
-    const resultCountEl = document.getElementById('result-count');
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartCountEl = document.getElementById('cart-count');
-    const checkoutTrigger = document.getElementById('checkout-trigger');
-    const paymentModal = document.getElementById('payment-modal');
-    const overlay = document.getElementById('overlay');
-    const momoOption = document.getElementById('momo-option');
-    const omOption = document.getElementById('om-option');
-    const cardOption = document.getElementById('card-option');
-    const codOption = document.getElementById('cod-option');
-    const paypalOption = document.getElementById('paypal-option');
-    const payButton = document.getElementById('pay-button');
-    const cancelPay = document.getElementById('cancel-pay');
-    const paymentStatus = document.getElementById('payment-status');
-    const screenOverlay = document.getElementById('screen-overlay');
-    const hamburger = document.getElementById('hamburger');
-    const mainNav = document.getElementById('main-nav');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const overlayEl = document.getElementById('overlay');
+    const resultCount = document.getElementById('result-count');
+    const noResultsMsg = document.getElementById('no-resultsMessage');
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('sort-select');
     const minPriceInput = document.getElementById('min-price');
     const maxPriceInput = document.getElementById('max-price');
-    const sortSelect = document.getElementById('sort-select');
-    const categoryBar = document.getElementById('categories-bar');
-    const categoryCards = document.querySelectorAll('.category-card');
-    const resetFiltersBtn = document.getElementById('reset-filters');
-    const productCardNodes = document.querySelectorAll('.product-card');
-    const productGridList = document.getElementById('product-grid');
-    const cardFormContainer = document.getElementById('card-form-container');
-    const cardNumberInput = document.getElementById('card-number');
-    const cardNameInput = document.getElementById('card-name');
-    const cardExpiryInput = document.getElementById('card-expiry');
-    const cardCvvInput = document.getElementById('card-cvv');
-    const cookieBanner = document.getElementById('cookie-banner');
-    const cookieAccept = document.getElementById('cookie-accept');
-    const orderSummaryEl = document.getElementById('order-summary');
-    const orderCardFormContainer = document.getElementById('card-form-container');
-    const totalDisplay = document.createElement('div'); // pour afficher le total dans le modal
+    const resetBtn = document.getElementById('reset-filters');
+    const cartCountSpan = document.getElementById('cart-count');
 
-    // État des filtres
-    let cart = [];
-    let currentQuery = '';
     let currentCategory = 'all';
-    let minPrice = 0;
-    let maxPrice = 100000;
     let currentSort = 'popularity';
-    let showCardForm = false;
-    let selectedMethod = '';
 
-    // Helpers
-    function formatPrice(n) {
-      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(n);
-    }
+    // Activation du bouton "Mon compte" et catégories
+    document.querySelector('.action-btn[href="#account"]').classList.add('active');
+    document.querySelector('.action-btn[href="#account"]').setAttribute('tabindex', '0');
 
-    function renderRatingStars(rating) {
-      const full = Math.floor(rating);
-      const half = rating - full >= 0.5;
-      let s = '★★★★★'.slice(0, full);
-      if (half) s += '☆';
-      while (s.length < 5) s += '☆';
-      return s;
-    }
-
-    // Carte totals
-    function cartTotal() {
-      return cart.reduce((sum, it) => sum + (typeof it.price === 'number' ? it.price : parseInt(it.price || 0, 10)), 0);
-    }
-
-    // Filtrage des produits
-    function filterProducts() {
-      const cards = productGrid.querySelectorAll('.product-card');
-      let visible = 0;
-      cards.forEach(card => {
-        const title = (card.dataset.title || '').toLowerCase();
-        const cat = (card.dataset.category || '');
-        const price = parseInt(card.dataset.price || '0', 10);
-        const tags = (card.dataset.tags || '').toLowerCase();
-        const inQuery = !currentQuery || title.includes(currentQuery) || tags.includes(currentQuery);
-        const inCategory = currentCategory === 'all' || cat === currentCategory;
-        const inPrice = price >= minPrice && price <= maxPrice;
-        const show = inQuery && inCategory && inPrice;
-        card.style.display = show ? 'flex' : 'none';
-        if (show) visible++;
-      });
-
-      // Tri
-      const grid = productGrid;
-      const itemsArray = Array.from(grid.querySelectorAll('.product-card')).filter(card => card.style.display !== 'none');
-      if (currentSort === 'price-asc' || currentSort === 'price-desc') {
-        itemsArray.sort((a, b) => {
-          const pa = parseInt(a.dataset.price, 10);
-          const pb = parseInt(b.dataset.price, 10);
-          return currentSort === 'price-asc' ? pa - pb : pb - pa;
-        });
-        itemsArray.forEach(item => grid.appendChild(item));
-      } else if (currentSort === 'rating-desc') {
-        itemsArray.sort((a, b) => {
-          const ra = parseFloat(a.dataset.rating || '0');
-          const rb = parseFloat(b.dataset.rating || '0');
-          return rb - ra;
-        });
-        itemsArray.forEach(item => grid.appendChild(item));
-      }
-      resultCountEl.textContent = visible;
-      noResultsEl.style.display = visible === 0 ? 'block' : 'none';
-    }
-
-    // Recherche live
-    function updateSearchFromQuery() {
-      currentQuery = (searchInput.value || '').toLowerCase().trim();
-      filterProducts();
-    }
-
-    // Catégories: marque l'élément actif et filtre
-    function setActiveCategory(cat) {
-      currentCategory = cat;
-      categoryCards.forEach(card => {
-        const c = (card.dataset.category || '').toLowerCase();
-        if (cat === 'all') card.classList.remove('active');
-        else card.classList.toggle('active', c === cat.toLowerCase());
-      });
-      if (cat === 'all') {
-        categoryCards.forEach(card => card.classList.remove('active'));
-      }
-      filterProducts();
-    }
-
-    // Ouverture du modal paiement
-    function openPaymentModal() {
-      paymentStatus.textContent = '';
-      selectedMethod = '';
-      [momoOption, omOption, cardOption, codOption, paypalOption].forEach(el => el.classList.remove('active'));
-      payButton.disabled = true;
-      orderSummaryEl.innerHTML = ''; // reset
-      // Montant total et récap
-      renderOrderSummary();
-      cardFormContainer?.classList.add('hidden');
-      showCardForm = false;
-      paymentModal.classList.add('active');
-      paymentModal.setAttribute('aria-hidden', 'false');
-      overlay.style.display = 'block';
-      // désactiver le scroll du corps
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePaymentModal() {
-      paymentModal.classList.remove('active');
-      paymentModal.setAttribute('aria-hidden', 'true');
-      overlay.style.display = 'none';
-      screenOverlay.style.display = 'none';
-      document.body.style.overflow = '';
-      // reset card form fields
-      if (cardNumberInput) cardNumberInput.value = '';
-      if (cardNameInput) cardNameInput.value = '';
-      if (cardExpiryInput) cardExpiryInput.value = '';
-      if (cardCvvInput) cardCvvInput.value = '';
-    }
-
-    function renderOrderSummary() {
-      const total = cartTotal();
-      const lines = cart.map(it => `<div>${it.title} - ${formatPrice(it.price)}</div>`).join('');
-      orderSummaryEl.innerHTML = `
-        <strong>Récapitulatif de la commande</strong>
-        <div style="margin-top:6px; font-size:13px; color:#555;">
-          ${lines || '<em>Aucun article</em>'}
-        </div>
-        <div style="margin-top:6px; font-weight:600;">Total: ${formatPrice(total)}</div>
-      `;
-      // Mettre le total dans un affichage interne si besoin
-    }
-
-    function selectPaymentMethod(el) {
-      [momoOption, omOption, cardOption, codOption, paypalOption].forEach(o => o.classList.remove('active'));
-      el.classList.add('active');
-      selectedMethod = el.dataset.method;
-      // montrer formulaire carte si carte bancaire
-      if (el === cardOption) {
-        cardFormContainer?.classList.remove('hidden');
-        showCardForm = true;
-        // activer le bouton si les champs non vides
-        validateCardForm();
-      } else {
-        cardFormContainer?.classList.add('hidden');
-        showCardForm = false;
-      }
-      payButton.disabled = false;
-    }
-
-    function validateCardForm() {
-      const num = cardNumberInput?.value.trim() || '';
-      const name = cardNameInput?.value.trim() || '';
-      const exp = cardExpiryInput?.value.trim() || '';
-      const cvv = cardCvvInput?.value.trim() || '';
-      const valid = num.length >= 12 && name.length >= 2 && exp.length >= 4 && cvv.length >= 3;
-      payButton.disabled = !valid;
-    }
-
-    // Événements paiement
-    momoOption.addEventListener('click', () => selectPaymentMethod(momoOption));
-    omOption.addEventListener('click', () => selectPaymentMethod(omOption));
-    cardOption.addEventListener('click', () => selectPaymentMethod(cardOption));
-    codOption.addEventListener('click', () => selectPaymentMethod(codOption));
-    paypalOption.addEventListener('click', () => selectPaymentMethod(paypalOption));
-
-    // Carte bancaire: live validation
-    if (cardNumberInput) cardNumberInput.addEventListener('input', validateCardForm);
-    if (cardNameInput) cardNameInput.addEventListener('input', validateCardForm);
-    if (cardExpiryInput) cardExpiryInput.addEventListener('input', validateCardForm);
-    if (cardCvvInput) cardCvvInput.addEventListener('input', validateCardForm);
-
-    // API: process payment (réelle mais prête à être remplacée)
-    async function processPayment(method, amount, items) {
-      const payload = {
-        method,
-        amount,
-        currency: 'XOF',
-        items,
-        orderId: 'ORD-' + Date.now()
-      };
-
-      // Exemple d'appel à votre backend. Remplacez l'URL par votre endpoint réel.
-      const apiUrl = '/api/payments';
-
-      try {
-        const resp = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        // Si votre API renvoie un JSON avec { success: true, transactionId, message }
-        if (!resp.ok) {
-          const err = await resp.text();
-          return { success: false, message: 'Erreur réseau: ' + (err || resp.statusText) };
-        }
-        const data = await resp.json();
-        if (data && data.success) {
-          return { success: true, data };
-        } else {
-          return { success: false, message: data?.message || 'Échec du paiement' };
-        }
-      } catch (e) {
-        return { success: false, message: 'Erreur de connexion: ' + e.message };
-      }
-    }
-
-    payButton.addEventListener('click', async () => {
-      const method = selectedMethod;
-      if (!method) return;
-
-      // Définir résultats affichés
-      paymentStatus.textContent = `Paiement en cours via ${method.toUpperCase()}...`;
-      payButton.disabled = true;
-
-      // Si carte bancaire, collectez les infos supplémentaires (optionnel, selon votre backend)
-      const amount = cartTotal();
-      const items = cart.map(it => ({ title: it.title, price: it.price }));
-
-      // Appel API réel
-      const result = await processPayment(method, amount, items);
-
-      if (result.success) {
-        paymentStatus.textContent = 'Paiement réussi ! Commande confirmée.';
-        // vider panier
-        cart = [];
-        cartCountEl.style.display = 'none';
-        cartCountEl.textContent = '0';
-        // Fermer le modal après un court délai et afficher un message
-        setTimeout(() => closePaymentModal(), 900);
-      } else {
-        paymentStatus.textContent = 'Échec du paiement: ' + (result.message || 'Erreur');
-        payButton.disabled = false;
-      }
-    });
-
-    cancelPay.addEventListener('click', () => closePaymentModal());
-
-    // Panier: ajouter au panier
-    function addToCart(productCard) {
-      const title = productCard.dataset.title;
-      const priceValue = parseInt(productCard.dataset.price || '0', 10) || 0;
-      cart.push({ title, price: priceValue });
-      cartCountEl.style.display = 'inline-block';
-      cartCountEl.textContent = cart.length;
-    }
-
-    addToCartButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.product-card');
-        addToCart(card);
-        // petit feedback
-        btn.innerHTML = '<i class="fas fa-check"></i> Ajouté';
-        setTimeout(() => btn.innerHTML = '<i class="fas fa-plus"></i>Ajouter au panier', 900);
-      });
-    });
-
-    // Bouton Panier: ouvrir paiement
-    checkoutTrigger.addEventListener('click', (e) => {
-      if (cart.length === 0) {
-        alert('Votre panier est vide. Ajoutez des articles avant de payer.');
-        return;
-      }
-      openPaymentModal();
-    });
-
-    // Menu hamburger + overlay (Mobile)
-    function toggleMobileMenu(show) {
-      if (show) {
-        mainNav.classList.add('active'); overlayEl.style.display = 'block'; overlayEl.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        hamburger.setAttribute('aria-pressed', 'true');
-      } else {
-        mainNav.classList.remove('active'); overlayEl.style.display = 'none'; overlayEl.classList.remove('active');
-        document.body.style.overflow = '';
-        hamburger.setAttribute('aria-pressed', 'false');
-      }
-    }
-
-    hamburger.addEventListener('click', () => {
-      const isActive = mainNav.classList.contains('active');
-      toggleMobileMenu(!isActive);
-    });
-    overlayEl.addEventListener('click', () => toggleMobileMenu(false));
-
-    // Navigation entre sections (clique sur le menu)
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').slice(1);
-        showSection(targetId);
-        if (mainNav.classList.contains('active')) toggleMobileMenu(false);
-      });
-    });
-
-    function showSection(id) {
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-      const target = document.getElementById(id);
-      if (target) target.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Reset filters
-    resetFiltersBtn.addEventListener('click', () => {
-      currentQuery = '';
-      searchInput.value = '';
-      currentCategory = 'all';
-      minPrice = 0; maxPrice = 100000;
-      minPriceInput.value = 0; maxPriceInput.value = 100000;
-      sortSelect.value = 'popularity';
-      currentSort = 'popularity';
-      setActiveCategory('all');
-      filterProducts();
-    });
-
-    // Catégories dynamiques dans la page (barre de catégories)
     categoryCards.forEach(card => {
+      card.setAttribute('tabindex', '0');
+      card.classList.add('active'); // toutes actives
       card.addEventListener('click', () => {
-        const cat = (card.dataset.category || 'all').toLowerCase();
+        const cat = card.dataset.category.toLowerCase();
         setActiveCategory(cat);
       });
     });
 
-    // Recherche et filtres
-    searchInput.addEventListener('input', updateSearchFromQuery);
-    searchBtn.addEventListener('click', updateSearchFromQuery);
+    // Fonction pour afficher produits
+    function displayProducts() {
+      let filtered = products.filter(p => {
+        if (currentCategory !== 'all' && p.category.toLowerCase() !== currentCategory) {
+          return false;
+        }
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm && !p.title.toLowerCase().includes(searchTerm) && !p.tags.toLowerCase().includes(searchTerm)) {
+          return false;
+        }
+        const minP = parseInt(minPriceInput.value);
+        const maxP = parseInt(maxPriceInput.value);
+        if (p.price < minP || p.price > maxP) {
+          return false;
+        }
+        return true;
+      });
 
-    minPriceInput.addEventListener('input', () => {
-      const v = parseInt(minPriceInput.value || '0', 10);
-      minPrice = Number.isFinite(v) ? v : 0;
-      filterProducts();
-    });
-    maxPriceInput.addEventListener('input', () => {
-      const v = parseInt(maxPriceInput.value || '100000', 10);
-      maxPrice = Number.isFinite(v) ? v : 100000;
-      filterProducts();
-    });
-    sortSelect.addEventListener('change', () => {
-      currentSort = sortSelect.value;
-      filterProducts();
-    });
+      // Tri
+      switch(currentSort) {
+        case 'popularity':
+          // Pas de popularity dans data, on trie par rating
+          filtered.sort((a,b) => b.rating - a.rating);
+          break;
+        case 'price-asc':
+          filtered.sort((a,b) => a.price - b.price);
+          break;
+        case 'price-desc':
+          filtered.sort((a,b) => b.price - a.price);
+          break;
+        case 'rating-desc':
+          filtered.sort((a,b) => b.rating - a.rating);
+          break;
+      }
 
-    // Cookies banner
-    cookieAccept.addEventListener('click', () => {
-      cookieBanner.style.display = 'none';
-      localStorage.setItem('cookiesAccepted', 'true');
-    });
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      cookieBanner.style.display = 'none';
+      // Affichage
+      productGrid.innerHTML = '';
+      if(filtered.length === 0) {
+        document.getElementById('result-count').textContent = 0;
+        noResultsMsg.style.display = 'block';
+        document.getElementById('no-resultsMessage').style.display = 'block';
+        return;
+      } else {
+        noResultsMsg.style.display = 'none';
+        document.getElementById('no-resultsMessage').style.display = 'none';
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('aria-label', p.title);
+        card.innerHTML = `
+          <div class="product-image"><i class="fas fa-box-open"></i></div>
+          <div class="product-title">${p.title}</div>
+          <div class="rating" aria-label="Note ${p.rating} sur 5">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5 - Math.round(p.rating))}</div>
+          <div class="product-price">${p.price.toLocaleString()} FCFA</div>
+          <button class="btn add-to-cart" data-id="${p.id}" aria-label="Ajouter ${p.title} au panier"><i class="fas fa-plus"></i>Ajouter au panier</button>
+        `;
+        productGrid.appendChild(card);
+      });
+      resultCount.textContent = filtered.length;
+      // Ajout des événements pour "Ajouter au panier"
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+          let count = parseInt(cartCountSpan.textContent);
+          count++;
+          cartCountSpan.textContent = count;
+          cartCountSpan.style.display = 'inline-block';
+        });
+      });
     }
 
-    // Sections et démarrage
-    showSection('home');
-    filterProducts();
+    function setActiveCategory(cat) {
+      currentCategory = cat;
+      categoryCards.forEach(c => {
+        c.classList.toggle('active', c.dataset.category.toLowerCase() === cat);
+      });
+      displayProducts();
+    }
 
-    // Initialisation des barres cat affichées
-    const categoriesList = document.getElementById('categories-list');
-    const baseCategories = ['Électronique', 'Vêtements', 'Maison', 'Automobile'];
-    baseCategories.forEach(cat => {
-      const el = document.createElement('div');
-      el.className = 'category-card';
-      el.style.cursor = 'default';
-      el.innerHTML = `<i class="fas fa-tag"></i><div style="font-size:12px">${cat}</div>`;
-      el.style.display = 'none';
-      categoriesList.appendChild(el);
+    // Événements
+    document.querySelectorAll('.category-card').forEach(c => {
+      c.addEventListener('click', () => {
+        setActiveCategory(c.dataset.category.toLowerCase());
+      });
     });
+
+    document.getElementById('search-btn').addEventListener('click', () => {
+      displayProducts();
+    });
+    searchInput.addEventListener('keyup', e => {
+      if(e.key === 'Enter') displayProducts();
+    });
+
+    sortSelect.addEventListener('change', () => {
+      const newSort = sortSelect.value;
+      if(['popularity', 'price-asc', 'price-desc', 'rating-desc'].includes(newSort)) {
+        currentSort = newSort;
+        displayProducts();
+      } else {
+        alert('Tri non reconnu. Veuillez sélectionner une option valide.');
+        sortSelect.value = currentSort;
+      }
+    });
+
+    document.getElementById('reset-filters').addEventListener('click', () => {
+      minPriceInput.value = 0;
+      maxPriceInput.value = 100000;
+      searchInput.value = '';
+      currentCategory = 'all';
+      categoryCards.forEach(c => c.classList.remove('active'));
+      document.querySelector('.category-card[data-category="Électronique"]').classList.add('active');
+      document.querySelector('.category-card[data-category="Vêtements"]').classList.add('active');
+      document.querySelector('.category-card[data-category="Maison"]').classList.add('active');
+      document.querySelector('.category-card[data-category="Automobile"]').classList.add('active');
+      setActiveCategory('all');
+      sortSelect.value = 'popularity';
+      displayProducts();
+    });
+
+    // Initial display
+    setActiveCategory('all');
+
+    // Menu hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+    });
+    document.getElementById('overlay').addEventListener('click', () => {
+      document.getElementById('main-nav').classList.remove('active');
+    });
+
+    // Recherche avec Enter
+    searchInput.addEventListener('keyup', e => {
+      if(e.key === 'Enter') {
+        displayProducts();
+      }
+    });
+
   </script>
 </body>
 </html>
