@@ -4,22 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kamermall - Marketplace 100% Camerounaise</title>
+<!-- Font Awesome pour les icônes -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<!-- Styles CSS -->
 <style>
-  /* Insérez ici votre CSS complet, celui que vous avez fourni à l'origine */
-  /* Pour la réponse, je vais supposer que vous utilisez celui que vous avez fourni. */
-  /* Ne pas oublier de le copier intégralement dans cette balise style. */
+  /* INSÉREZ VOTRE CSS COMPLET ICI, CELUI QUE VOUS AVEZ FOURNI */
 </style>
 </head>
 <body>
-<!-- Announce Bar -->
+<!-- Bar d'annonce -->
 <div class="announcement-bar">
   Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande &gt; 10.000 FCFA
 </div>
 
-<!-- Header -->
+<!-- En-tête -->
 <header>
   <div class="container">
+    <!-- Top header -->
     <div class="header-top">
       <a href="#home" class="logo">
         <i class="fas fa-shopping-bag logo-icon"></i>
@@ -28,39 +29,39 @@
           <div class="logo-tagline">Marketplace 100% Camerounaise</div>
         </div>
       </a>
+      <!-- Contact -->
       <div class="contact-info">
         <a href="tel:622125874" class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>+237 622 125 874</span>
+          <i class="fas fa-phone"></i> <span>+237 622 125 874</span>
         </a>
         <a href="mailto:contact@kamermall.cm" class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <span>contact@kamermall.cm</span>
+          <i class="fas fa-envelope"></i> <span>contact@kamermall.cm</span>
         </a>
       </div>
     </div>
+    <!-- Bottom header -->
     <div class="header-bottom">
+      <!-- Actions utilisateur -->
       <div class="user-actions">
         <a href="#account" class="action-btn">
-          <i class="fas fa-user"></i>
-          <span>Mon Compte</span>
+          <i class="fas fa-user"></i> <span>Mon Compte</span>
         </a>
         <a href="#favorites" class="action-btn">
-          <i class="fas fa-heart"></i>
-          <span>Favoris</span>
+          <i class="fas fa-heart"></i> <span>Favoris</span>
         </a>
         <a href="#cart" class="action-btn">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Panier (0)</span>
+          <i class="fas fa-shopping-cart"></i> <span>Panier (0)</span>
         </a>
       </div>
+      <!-- Barre de recherche -->
       <div class="search-container">
         <input type="text" class="search-box" placeholder="Que recherchez-vous ?" />
         <button class="search-btn">
           <i class="fas fa-search"></i>
         </button>
       </div>
-      <div class="hamburger" tabindex="0" aria-label="Menu" role="button" aria-pressed="false">
+      <!-- Menu hamburger -->
+      <div class="hamburger" tabindex="0" role="button" aria-label="Menu" aria-pressed="false">
         <span></span>
         <span></span>
         <span></span>
@@ -69,7 +70,7 @@
   </div>
 </header>
 
-<!-- Navigation -->
+<!-- Navigation principale -->
 <nav>
   <div class="container">
     <ul class="nav-menu">
@@ -84,20 +85,19 @@
   </div>
 </nav>
 
-<!-- Overlay menu -->
+<!-- Overlay du menu (pour fermer en cliquant dehors) -->
 <div class="menu-overlay"></div>
 
-<!-- Main -->
+<!-- Contenu principal -->
 <main>
-  <!-- Sections, contenu comme dans votre code, je laisse tel quel pour la brièveté -->
-  <!--... (Votre contenu ici) ... -->
-  <!-- Par exemple, section home, products, etc. -->
+  <!-- Ajoutez ici vos sections -->
 </main>
 
-<!-- Footer -->
+<!-- Pied de page -->
 <footer>
   <div class="container">
     <div class="footer-content">
+      <!-- Colonne 1 -->
       <div class="footer-column">
         <h3>KAMERMALL</h3>
         <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
@@ -108,6 +108,7 @@
           <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
+      <!-- Colonne 2 -->
       <div class="footer-column">
         <h3>Liens Rapides</h3>
         <ul class="footer-links">
@@ -118,6 +119,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
+      <!-- Colonne 3 -->
       <div class="footer-column">
         <h3>Service Client</h3>
         <ul class="footer-links">
@@ -128,6 +130,7 @@
           <li><a href="#privacy">Confidentialité</a></li>
         </ul>
       </div>
+      <!-- Colonne 4 -->
       <div class="footer-column">
         <h3>Newsletter</h3>
         <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
@@ -143,77 +146,63 @@
   </div>
 </footer>
 
-<!-- Script -->
+<!-- Script JavaScript -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const menuOverlay = document.querySelector('.menu-overlay');
     const sections = document.querySelectorAll('.page-section');
 
-    // Afficher la section home par défaut
-    sections.forEach(section => {
-      if (section.id === 'home') {
-        section.classList.add('active');
-      } else {
-        section.classList.remove('active');
-      }
-    });
-
-    function navigateToSection(targetId) {
-      sections.forEach(section => section.classList.remove('active'));
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) targetSection.classList.add('active');
-    }
-
-    // Navigation clic
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        navigateToSection(targetId);
-        if (navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-          menuOverlay.classList.remove('active');
-          document.body.classList.remove('no-scroll');
-        }
-      });
-    });
-
-    // Toggle menu clic
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      navMenu.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-      document.body.classList.toggle('no-scroll');
-    });
-
-    // Overlay clic
-    menuOverlay.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-      this.classList.remove('active');
-      document.body.classList.remove('no-scroll');
-    });
-
-    // Clavier hamburger
+    // Gestion du menu hamburger avec clavier
     hamburger.setAttribute('tabindex', '0');
     hamburger.setAttribute('role', 'button');
     hamburger.setAttribute('aria-label', 'Menu');
     hamburger.setAttribute('aria-pressed', 'false');
 
-    hamburger.addEventListener('keydown', function(e) {
+    hamburger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32) {
         e.preventDefault();
-        this.classList.toggle('active');
+        const isActive = hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
         menuOverlay.classList.toggle('active');
-        // mettre à jour aria-pressed
-        const pressed = this.getAttribute('aria-pressed') === 'true';
-        this.setAttribute('aria-pressed', String(!pressed));
+        hamburger.setAttribute('aria-pressed', String(isActive));
       }
+    });
+
+    // Ouverture/fermeture avec clic
+    hamburger.addEventListener('click', () => {
+      const isActive = hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+      hamburger.setAttribute('aria-pressed', String(isActive));
+    });
+
+    // Fermer le menu quand clic sur overlay
+    menuOverlay.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+      hamburger.setAttribute('aria-pressed', 'false');
+    });
+
+    // Navigation clic sur liens
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        // Si vous avez des sections, gérez leur affichage ici
+        // Exemple : document.getElementById(targetId).scrollIntoView();
+        // ou votre logique spécifique
+        // Fermer menu mobile si ouvert
+        if (navMenu.classList.contains('active')) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+          menuOverlay.classList.remove('active');
+          hamburger.setAttribute('aria-pressed', 'false');
+        }
+      });
     });
   });
 </script>
