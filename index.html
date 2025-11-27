@@ -177,6 +177,8 @@
         .nav-menu {
             display: flex;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-item {
@@ -233,6 +235,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             text-align: center;
+            padding: 100px 0;
         }
 
         .hero-content {
@@ -479,6 +482,7 @@
 
         .footer-links {
             list-style: none;
+            padding: 0;
         }
 
         .footer-links li {
@@ -532,7 +536,6 @@
             display: flex;
             gap: 15px;
             margin-top: 15px;
-            justify-content: center;
         }
 
         .social-link {
@@ -544,6 +547,15 @@
 
         .social-link:hover {
             color: var(--secondary);
+        }
+
+        /* Section visibility */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
         }
 
         /* Responsive Design */
@@ -683,13 +695,8 @@
             display: block;
         }
 
-        /* Section visibility */
-        .page-section {
-            display: none;
-        }
-
-        .page-section.active {
-            display: block;
+        body.no-scroll {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -755,13 +762,13 @@
     <nav>
         <div class="container">
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
-                <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
-                <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-list"></i> Catégories</a></li>
-                <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
-                <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                <li class="nav-item"><a href="#home" class="nav-link nav-home"><i class="fas fa-home"></i> Accueil</a></li>
+                <li class="nav-item"><a href="#products" class="nav-link nav-products"><i class="fas fa-box"></i> Produits</a></li>
+                <li class="nav-item"><a href="#categories" class="nav-link nav-categories"><i class="fas fa-list"></i> Catégories</a></li>
+                <li class="nav-item"><a href="#sellers" class="nav-link nav-sellers"><i class="fas fa-store"></i> Vendeurs</a></li>
+                <li class="nav-item"><a href="#promotions" class="nav-link nav-promotions"><i class="fas fa-tag"></i> Promotions</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link nav-about"><i class="fas fa-info-circle"></i> À propos</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link nav-contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -772,7 +779,7 @@
     <!-- Main Content -->
     <main>
         <!-- Home Section -->
-        <section id="home" class="page-section active">
+        <section id="home" class="page-section active fade-in">
             <div class="container">
                 <div class="hero">
                     <div class="hero-content">
@@ -794,7 +801,7 @@
         </section>
 
         <!-- Products Section -->
-        <section id="products" class="page-section">
+        <section id="products" class="page-section fade-in">
             <div class="container">
                 <h2 class="section-title">Produits Populaires</h2>
                 <div class="products-grid">
@@ -848,7 +855,7 @@
         </section>
 
         <!-- Categories Section -->
-        <section id="categories" class="page-section">
+        <section id="categories" class="page-section fade-in">
             <div class="container">
                 <h2 class="section-title">Catégories</h2>
                 <div class="categories-grid">
@@ -881,7 +888,7 @@
         </section>
 
         <!-- Why Choose Us Section -->
-        <section id="about" class="page-section">
+        <section id="about" class="page-section fade-in">
             <div class="container">
                 <h2 class="section-title">Pourquoi Choisir Kamermall ?</h2>
                 <div class="features-grid">
@@ -905,7 +912,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="page-section">
+        <section id="contact" class="page-section fade-in">
             <div class="container">
                 <h2 class="section-title">Contactez-Nous</h2>
                 <div class="features-grid">
@@ -937,7 +944,7 @@
                     <h3>KAMERMALL</h3>
                     <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
@@ -946,11 +953,11 @@
             <div class="footer-column">
                 <h3>Liens Rapides</h3>
                 <ul class="footer-links">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#products">Produits</a></li>
-                    <li><a href="#categories">Catégories</a></li>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="footer-nav-link">Accueil</a></li>
+                    <li><a href="#products" class="footer-nav-link">Produits</a></li>
+                    <li><a href="#categories" class="footer-nav-link">Catégories</a></li>
+                    <li><a href="#about" class="footer-nav-link">À propos</a></li>
+                    <li><a href="#contact" class="footer-nav-link">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -978,66 +985,77 @@
     </footer>
 
     <script>
-        // Navigation functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
+            // Sélectionner tous les éléments nécessaires
+            const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const menuOverlay = document.querySelector('.menu-overlay');
             const sections = document.querySelectorAll('.page-section');
             
-            // Show home section by default
-            sections.forEach(section => {
-                if (section.id === 'home') {
-                    section.classList.add('active');
-                } else {
+            // Fonction pour changer de section
+            function showSection(sectionId) {
+                console.log('Tentative d\'afficher la section:', sectionId);
+                
+                // Masquer toutes les sections
+                sections.forEach(section => {
                     section.classList.remove('active');
+                    section.style.display = 'none';
+                });
+                
+                // Afficher la section cible
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                    setTimeout(() => {
+                        targetSection.classList.add('active');
+                    }, 50);
                 }
-            });
-
-            // Navigation click handler
+                
+                // Mettre à jour la navigation active
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active-nav');
+                    }
+                });
+            }
+            
+            // Ajouter les écouteurs d'événements aux liens de navigation
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
                     const targetId = this.getAttribute('href').substring(1);
+                    console.log('Clic sur le lien:', targetId);
+                    showSection(targetId);
                     
-                    // Hide all sections
-                    sections.forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    // Show target section
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                    }
-                    
-                    // Close mobile menu if open
+                    // Fermer le menu mobile si ouvert
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                         hamburger.classList.remove('active');
                         menuOverlay.classList.remove('active');
                         document.body.classList.remove('no-scroll');
-                    }
                 });
             });
-
-            // Mobile menu toggle
+            
+            // Gestion du menu hamburger
             hamburger.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
                 menuOverlay.classList.toggle('active');
                 document.body.classList.toggle('no-scroll');
             });
-
-            // Close menu when clicking overlay
+            
+            // Fermer le menu en cliquant sur l'overlay
             menuOverlay.addEventListener('click', function() {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 this.classList.remove('active');
                 document.body.classList.remove('no-scroll');
             });
+            
+            // Afficher la section d'accueil par défaut
+            showSection('home');
         });
     </script>
 </body>
