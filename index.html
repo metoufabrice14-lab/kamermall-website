@@ -8,7 +8,292 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <!-- Styles CSS -->
 <style>
-  /* INSÉREZ VOTRE CSS COMPLET ICI, CELUI QUE VOUS AVEZ FOURNI */
+/* Votre CSS fourni */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.announcement-bar {
+  background-color: #e60000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.header-top, .header-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.logo-icon {
+  font-size: 40px;
+  margin-right: 10px;
+  color: #e60000;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-tagline {
+  font-size: 12px;
+  color: #555;
+}
+
+.contact-info {
+  display: flex;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.contact-item i {
+  margin-right: 8px;
+  color: #e60000;
+}
+
+.header-bottom {
+  justify-content: space-between;
+}
+
+.user-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.action-btn i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-btn {
+  background-color: #e60000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+nav {
+  background-color: #fff;
+  display: none;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  transition: background 0.3s;
+}
+
+.nav-item a:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-item i {
+  margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .search-box {
+    width: 70%;
+  }
+  .hamburger {
+    display: flex;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: right 0.3s;
+    z-index: 20;
+  }
+  nav.active {
+    right: 0;
+  }
+  .menu-overlay {
+    display: none;
+  }
+  .menu-overlay.active {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 15;
+  }
+}
+.page-section {
+  display: none;
+  padding: 40px 20px;
+}
+.page-section.active {
+  display: block;
+}
+
+/* Pied de page */
+footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 40px 20px;
+}
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+.footer-links li {
+  margin-bottom: 10px;
+}
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.social-link {
+  color: #ccc;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+.social-link:hover {
+  color: #fff;
+}
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Formulaire newsletter */
+.newsletter-form {
+  display: flex;
+  margin-top: 10px;
+}
+.newsletter-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #555;
+  border-radius: 4px 0 0 4px;
+}
+.newsletter-btn {
+  background-color: #e60000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  color: #fff;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -70,7 +355,7 @@
   </div>
 </header>
 
-<!-- Navigation principale -->
+<!-- Navigation -->
 <nav>
   <div class="container">
     <ul class="nav-menu">
@@ -85,64 +370,66 @@
   </div>
 </nav>
 
-<!-- Overlay du menu (pour fermer en cliquant dehors) -->
+<!-- Overlay menu -->
 <div class="menu-overlay"></div>
 
-<!-- Contenu principal -->
-<main>
-  <!-- Ajoutez ici vos sections -->
-</main>
+<!-- Sections principales (exemples) -->
+<div id="home" class="page-section active">
+  <h1>Bienvenue sur Kamermall</h1>
+</div>
+<div id="products" class="page-section">
+  <h1>Nos Produits</h1>
+</div>
+<!-- Ajoutez d'autres sections selon besoin -->
 
 <!-- Pied de page -->
 <footer>
-  <div class="container">
-    <div class="footer-content">
-      <!-- Colonne 1 -->
-      <div class="footer-column">
-        <h3>KAMERMALL</h3>
-        <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-      <!-- Colonne 2 -->
-      <div class="footer-column">
-        <h3>Liens Rapides</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Accueil</a></li>
-          <li><a href="#products">Produits</a></li>
-          <li><a href="#categories">Catégories</a></li>
-          <li><a href="#about">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <!-- Colonne 3 -->
-      <div class="footer-column">
-        <h3>Service Client</h3>
-        <ul class="footer-links">
-          <li><a href="#help">Aide & FAQ</a></li>
-          <li><a href="#shipping">Livraison</a></li>
-          <li><a href="#returns">Retours</a></li>
-          <li><a href="#terms">Conditions</a></li>
-          <li><a href="#privacy">Confidentialité</a></li>
-        </ul>
-      </div>
-      <!-- Colonne 4 -->
-      <div class="footer-column">
-        <h3>Newsletter</h3>
-        <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
-        <form class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Votre email" />
-          <button type="submit" class="newsletter-btn">S'inscrire</button>
-        </form>
+  <div class="footer-content">
+    <!-- Colonne 1 -->
+    <div class="footer-column">
+      <h3>KAMERMALL</h3>
+      <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
+    <!-- Colonne 2 -->
+    <div class="footer-column">
+      <h3>Liens Rapides</h3>
+      <ul class="footer-links">
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="#categories">Catégories</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+    <!-- Colonne 3 -->
+    <div class="footer-column">
+      <h3>Service Client</h3>
+      <ul class="footer-links">
+        <li><a href="#help">Aide & FAQ</a></li>
+        <li><a href="#shipping">Livraison</a></li>
+        <li><a href="#returns">Retours</a></li>
+        <li><a href="#terms">Conditions</a></li>
+        <li><a href="#privacy">Confidentialité</a></li>
+      </ul>
+    </div>
+    <!-- Colonne 4 -->
+    <div class="footer-column">
+      <h3>Newsletter</h3>
+      <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Votre email" />
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
   </div>
 </footer>
 
@@ -153,7 +440,6 @@
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const menuOverlay = document.querySelector('.menu-overlay');
-    const sections = document.querySelectorAll('.page-section');
 
     // Gestion du menu hamburger avec clavier
     hamburger.setAttribute('tabindex', '0');
@@ -192,9 +478,11 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').slice(1);
-        // Si vous avez des sections, gérez leur affichage ici
-        // Exemple : document.getElementById(targetId).scrollIntoView();
-        // ou votre logique spécifique
+        // Gestion de l'affichage des sections si nécessaire
+        document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) targetSection.classList.add('active');
+
         // Fermer menu mobile si ouvert
         if (navMenu.classList.contains('active')) {
           hamburger.classList.remove('active');
