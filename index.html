@@ -1,201 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KAMERMALL - La Marketplace du Cameroun</title>
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  header {
-    background-color: #2c3e50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  header h1 {
-    color: #ecf0f1;
-    font-size: 2em;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  nav a {
-    color: #ecf0f1;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  nav a:hover {
-    color: #3498db;
-  }
-  .banner {
-    background: linear-gradient(135deg, #2980b9, #6dd5fa);
-    color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-  }
-  .banner h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-  }
-  .section {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-  #products-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-  .product-card {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
-  }
-  .product-card:hover {
-    transform: translateY(-5px);
-  }
-  .product-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-  .product-info {
-    padding: 15px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .product-title {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    color: #34495e;
-  }
-  .product-price {
-    font-size: 1.2em;
-    color: #27ae60;
-    margin-bottom: 15px;
-  }
-  .buy-button {
-    background-color: #2980b9;
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-  }
-  .buy-button:hover {
-    background-color: #3498db;
-  }
-  .contact-info {
-    background-color: #ecf0f1;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 1.2em;
-    color: #2c3e50;
-  }
-  /* Modal styles */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto;
-    background-color: rgba(44, 62, 80, 0.7);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    position: relative;
-    animation: slideIn 0.3s ease-out;
-  }
-  @keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #333;
-    transition: color 0.3s;
-  }
-  .close-btn:hover {
-    color: #e74c3c;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  input[type="text"], input[type="tel"], select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-  }
-  button[type="submit"] {
-    padding: 12px;
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  button[type="submit"]:hover {
-    background-color: #2ecc71;
-  }
-  @media(max-width: 768px){
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KAMERMALL - La Marketplace du Cameroun</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
     header {
-      flex-direction: column;
-      align-items: flex-start;
+      background-color: #2c3e50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    nav ul {
-      flex-direction: column;
-      width: 100%;
+    header h1 { color: #ecf0f1; font-size: 2em; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav a {
+      color: #ecf0f1; text-decoration: none; font-weight: bold;
+      transition: color 0.3s;
     }
-  }
-</style>
+    nav a:hover { color: #3498db; }
+
+    .banner {
+      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      color: #fff; padding: 60px 20px; text-align: center;
+    }
+    .banner h2 { font-size: 2em; margin-bottom: 10px; }
+
+    .section { padding: 40px 20px; max-width: 1200px; margin: auto; }
+    h2 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+
+    #products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #fff; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex; flex-direction: column; transition: transform 0.2s;
+    }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-img { width: 100%; height: 180px; object-fit: cover; }
+    .product-info { padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .product-title { font-size: 1.1em; margin-bottom: 10px; color: #34495e; }
+    .product-price { font-size: 1.2em; color: #27ae60; margin-bottom: 15px; }
+    .buy-button {
+      background-color: #2980b9; color: #fff; border: none; padding: 12px;
+      border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;
+    }
+    .buy-button:hover { background-color: #3498db; }
+
+    .contact-info {
+      background-color: #ecf0f1; text-align: center;
+      padding: 30px 20px; font-size: 1.2em; color: #2c3e50;
+    }
+
+    /* Modal */
+    .modal { display: none; position: fixed; z-index: 9999;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto; background-color: rgba(44, 62, 80, 0.7);
+      justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background-color: #fff; padding: 30px; border-radius: 10px;
+      max-width: 500px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      position: relative; animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .close-btn {
+      position: absolute; top: 15px; right: 20px;
+      font-size: 1.5em; cursor: pointer; color: #333; transition: color 0.3s;
+    }
+    .close-btn:hover { color: #e74c3c; }
+
+    form { display: flex; flex-direction: column; gap: 15px; }
+    input[type="text"], input[type="tel"], select {
+      padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;
+    }
+    button[type="submit"] {
+      padding: 12px; background-color: #27ae60; color: #fff; border: none;
+      border-radius: 5px; font-size: 1.1em; cursor: pointer; transition: background 0.3s;
+    }
+    button[type="submit"]:hover { background-color: #2ecc71; }
+
+    @media(max-width: 768px){
+      header { flex-direction: column; align-items: flex-start; }
+      nav ul { flex-direction: column; width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -225,9 +130,9 @@
 </section>
 
 <!-- Modal -->
-<div id="purchaseModal" class="modal">
+<div id="purchaseModal" class="modal" aria-hidden="true" role="dialog" aria-label="Procéder à l'achat">
   <div class="modal-content">
-    <span class="close-btn" id="closeModal">&times;</span>
+    <span class="close-btn" id="closeModal" aria-label="Fermer">&times;</span>
     <h3>Procéder à l'achat</h3>
     <form id="purchaseForm">
       <input type="hidden" id="productId" />
@@ -247,85 +152,136 @@
 </div>
 
 <script>
-const products = [
-  {
-    id: 1,
-    name: "Smartphone Android",
-    price: 12000,
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 2,
-    name: "Vélo électrique",
-    price: 50000,
-    image: "https://images.unsplash.com/photo-1606511076017-0a94b4e0d4f8?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 3,
-    name: "Télévision 55\"",
-    price: 150000,
-    image: "https://images.unsplash.com/photo-1603993086831-3f3b3c0d46f7?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
-  },
-  {
-    id: 4,
-    name: "Lampe LED",
-    price: 5000,
-    image: "https://images.unsplash.com/photo-1606767767840-73e2b1f8e4a2?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
+  // Données produits (peut être remplacé par une API)
+  const products = [
+    {
+      id: 1,
+      name: "Smartphone Android",
+      price: 12000,
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+      id: 2,
+      name: "Vélo électrique",
+      price: 50000,
+      image: "https://images.unsplash.com/photo-1606511076017-0a94b4e0d4f8?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+      id: 3,
+      name: "Télévision 55\"",
+      price: 150000,
+      image: "https://images.unsplash.com/photo-1603993086831-3f3b3c0d46f7?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+      id: 4,
+      name: "Lampe LED",
+      price: 5000,
+      image: "https://images.unsplash.com/photo-1606767767840-73e2b1f8e4a2?ixlib=rb-4.0.4&auto=format&fit=crop&w=800&q=60"
+    }
+  ];
+
+  const container = document.getElementById('products-container');
+  const modal = document.getElementById('purchaseModal');
+  const closeBtn = document.getElementById('closeModal');
+  const purchaseForm = document.getElementById('purchaseForm');
+  const productIdInput = document.getElementById('productId');
+  const nameInput = document.getElementById('name');
+  const phoneInput = document.getElementById('phone');
+  const paymentSelect = document.getElementById('payment');
+
+  // Simple escape pour éviter injections potentielles (utilisé lors du rendu des noms)
+  function escapeHtml(text) {
+    if (!text) return '';
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
-];
 
-const container = document.getElementById('products-container');
-
-function renderProducts() {
-  products.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}" class="product-img" />
-      <div class="product-info">
-        <div>
-          <div class="product-title">${p.name}</div>
-          <div class="product-price">${p.price.toLocaleString()} FCFA</div>
+  // Rendering des produits
+  function renderProducts() {
+    container.innerHTML = '';
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${p.image}" alt="${escapeHtml(p.name)}" class="product-img" />
+        <div class="product-info">
+          <div>
+            <div class="product-title">${escapeHtml(p.name)}</div>
+            <div class="product-price">${p.price.toLocaleString()} FCFA</div>
+          </div>
+          <button class="buy-button" data-id="${p.id}">Acheter</button>
         </div>
-        <button class="buy-button" onclick="openModal(${p.id})">Acheter</button>
-      </div>
-    `;
-    container.appendChild(card);
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Ouvrir modal avec l'ID produit
+  function openModal(productId) {
+    productIdInput.value = productId;
+    // Reset fields au moment de l'ouverture
+    nameInput.value = '';
+    phoneInput.value = '';
+    paymentSelect.value = '';
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    // Mettre le focus sur le premier champ
+    nameInput.focus();
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  // Écouteurs
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+
+    // Détection des clics sur les boutons "Acheter" sans attacher onClick inline
+    container.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && target.classList.contains('buy-button')) {
+        const id = Number(target.getAttribute('data-id'));
+        if (!isNaN(id)) openModal(id);
+      }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Fermer en cliquant à l'extérieur du contenu modal
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Fermer avec Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+
+    // Formulaire d'achat
+    purchaseForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = Number(productIdInput.value);
+      const name = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const payment = paymentSelect.value;
+
+      if (!id || !name || !phone || !payment) {
+        alert('Veuillez remplir tous les champs.');
+        return;
+      }
+
+      const product = products.find(p => p.id === id);
+      alert(`Merci ${name} pour votre achat de "${product.name}".\nNous vous contacterons au ${phone}.\nMode de paiement : ${payment}.\n\nCe site est une maquette. Pour finaliser votre achat, contactez le +237 622 125 874.`);
+      closeModal();
+      purchaseForm.reset();
+    });
   });
-}
-
-function openModal(productId) {
-  document.getElementById('productId').value = productId;
-  document.getElementById('purchaseModal').style.display = 'flex';
-}
-
-document.getElementById('closeModal').onclick = () => {
-  document.getElementById('purchaseModal').style.display = 'none';
-};
-
-window.onclick = (e) => {
-  if (e.target === document.getElementById('purchaseModal')) {
-    document.getElementById('purchaseModal').style.display = 'none';
-  }
-};
-
-document.getElementById('purchaseForm').onsubmit = (e) => {
-  e.preventDefault();
-  const id = document.getElementById('productId').value;
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const payment = document.getElementById('payment').value;
-  if (!name || !phone || !payment) {
-    alert('Veuillez remplir tous les champs.');
-    return;
-  }
-  const product = products.find(p => p.id == id);
-  alert(`Merci ${name} pour votre achat de "${product.name}".\nNous vous contacterons au ${phone}.\nMode de paiement : ${payment}.\n\nCe site est une maquette. Pour finaliser votre achat, contactez le +237 622 125 874.`);
-  document.getElementById('purchaseModal').style.display = 'none';
-  document.getElementById('purchaseForm').reset();
-};
-
-renderProducts();
 </script>
 
 </body>
