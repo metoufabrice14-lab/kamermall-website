@@ -1,10 +1,10 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="fr"&gt;
-&lt;head&gt;
-&lt;meta charset="UTF-8" /&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;
-&lt;title&gt;KAMERMALL - La Marketplace du Cameroun&lt;/title&gt;
-&lt;style&gt;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KAMERMALL - La Marketplace du Cameroun</title>
+<style>
   * {
     box-sizing: border-box;
     margin: 0;
@@ -116,7 +116,6 @@
   .buy-button:hover {
     background-color: #3498db;
   }
-  /* Contact Section */
   .contact-info {
     background-color: #ecf0f1;
     text-align: center;
@@ -124,15 +123,13 @@
     font-size: 1.2em;
     color: #2c3e50;
   }
-  /* Modal Styles */
+  /* Modal styles */
   .modal {
     display: none;
     position: fixed;
     z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     overflow: auto;
     background-color: rgba(44, 62, 80, 0.7);
     justify-content: center;
@@ -188,7 +185,6 @@
   button[type="submit"]:hover {
     background-color: #2ecc71;
   }
-  /* Responsive adjustments */
   @media(max-width: 768px){
     header {
       flex-direction: column;
@@ -199,58 +195,58 @@
       width: 100%;
     }
   }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
+</style>
+</head>
+<body>
 
-&lt;header&gt;
-  &lt;h1&gt;KAMERMALL&lt;/h1&gt;
-  &lt;nav&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#accueil"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#produits"&gt;Produits&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/nav&gt;
-&lt;/header&gt;
+<header>
+  <h1>KAMERMALL</h1>
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#produits">Produits</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-&lt;section id="accueil" class="banner"&gt;
-  &lt;h2&gt;Bienvenue sur KAMERMALL, votre marketplace au Cameroun&lt;/h2&gt;
-&lt;/section&gt;
+<section id="accueil" class="banner">
+  <h2>Bienvenue sur KAMERMALL, votre marketplace au Cameroun</h2>
+</section>
 
-&lt;section id="produits" class="section"&gt;
-  &lt;h2&gt;Nos Produits&lt;/h2&gt;
-  &lt;div id="products-container"&gt;&lt;/div&gt;
-&lt;/section&gt;
+<section id="produits" class="section">
+  <h2>Nos Produits</h2>
+  <div id="products-container"></div>
+</section>
 
-&lt;section id="contact" class="section contact-info"&gt;
-  &lt;h2&gt;Contactez-nous&lt;/h2&gt;
-  &lt;p&gt;Numéro utile : &lt;strong&gt;+237 622 125 874&lt;/strong&gt;&lt;/p&gt;
-&lt;/section&gt;
+<section id="contact" class="section contact-info">
+  <h2>Contactez-nous</h2>
+  <p>Numéro utile : <strong>+237 622 125 874</strong></p>
+</section>
 
-&lt;!-- Modal pour achat --&gt;
-&lt;div id="purchaseModal" class="modal"&gt;
-  &lt;div class="modal-content"&gt;
-    &lt;span class="close-btn" id="closeModal"&gt;&times;&lt;/span&gt;
-    &lt;h3&gt;Procéder à l'achat&lt;/h3&gt;
-    &lt;form id="purchaseForm"&gt;
-      &lt;input type="hidden" id="productId" /&gt;
-      &lt;label for="name"&gt;Nom complet :&lt;/label&gt;
-      &lt;input type="text" id="name" required /&gt;
-      &lt;label for="phone"&gt;Téléphone :&lt;/label&gt;
-      &lt;input type="tel" id="phone" required /&gt;
-      &lt;label for="payment"&gt;Méthode de paiement :&lt;/label&gt;
-      &lt;select id="payment" required&gt;
-        &lt;option value=""&gt;--Choisissez--&lt;/option&gt;
-        &lt;option value="Mobile Money"&gt;Mobile Money&lt;/option&gt;
-        &lt;option value="Carte Bancaire"&gt;Carte Bancaire&lt;/option&gt;
-      &lt;/select&gt;
-      &lt;button type="submit"&gt;Confirmer l'achat&lt;/button&gt;
-    &lt;/form&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<!-- Modal -->
+<div id="purchaseModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h3>Procéder à l'achat</h3>
+    <form id="purchaseForm">
+      <input type="hidden" id="productId" />
+      <label for="name">Nom complet :</label>
+      <input type="text" id="name" required />
+      <label for="phone">Téléphone :</label>
+      <input type="tel" id="phone" required />
+      <label for="payment">Méthode de paiement :</label>
+      <select id="payment" required>
+        <option value="">--Choisissez--</option>
+        <option value="Mobile Money">Mobile Money</option>
+        <option value="Carte Bancaire">Carte Bancaire</option>
+      </select>
+      <button type="submit">Confirmer l'achat</button>
+    </form>
+  </div>
+</div>
 
-&lt;script&gt;
+<script>
 const products = [
   {
     id: 1,
@@ -281,18 +277,18 @@ const products = [
 const container = document.getElementById('products-container');
 
 function renderProducts() {
-  products.forEach(p =&gt; {
+  products.forEach(p => {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
-      &lt;img src="${p.image}" alt="${p.name}" class="product-img" /&gt;
-      &lt;div class="product-info"&gt;
-        &lt;div&gt;
-          &lt;div class="product-title"&gt;${p.name}&lt;/div&gt;
-          &lt;div class="product-price"&gt;${p.price.toLocaleString()} FCFA&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;button class="buy-button" onclick="openModal(${p.id})"&gt;Acheter&lt;/button&gt;
-      &lt;/div&gt;
+      <img src="${p.image}" alt="${p.name}" class="product-img" />
+      <div class="product-info">
+        <div>
+          <div class="product-title">${p.name}</div>
+          <div class="product-price">${p.price.toLocaleString()} FCFA</div>
+        </div>
+        <button class="buy-button" onclick="openModal(${p.id})">Acheter</button>
+      </div>
     `;
     container.appendChild(card);
   });
@@ -303,36 +299,34 @@ function openModal(productId) {
   document.getElementById('purchaseModal').style.display = 'flex';
 }
 
-document.getElementById('closeModal').onclick = () =&gt; {
+document.getElementById('closeModal').onclick = () => {
   document.getElementById('purchaseModal').style.display = 'none';
-}
+};
 
-window.onclick = (e) =&gt; {
+window.onclick = (e) => {
   if (e.target === document.getElementById('purchaseModal')) {
     document.getElementById('purchaseModal').style.display = 'none';
   }
-}
+};
 
-document.getElementById('purchaseForm').onsubmit = (e) =&gt; {
+document.getElementById('purchaseForm').onsubmit = (e) => {
   e.preventDefault();
   const id = document.getElementById('productId').value;
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const payment = document.getElementById('payment').value;
-
   if (!name || !phone || !payment) {
     alert('Veuillez remplir tous les champs.');
     return;
   }
-
-  const product = products.find(p =&gt; p.id == id);
+  const product = products.find(p => p.id == id);
   alert(`Merci ${name} pour votre achat de "${product.name}".\nNous vous contacterons au ${phone}.\nMode de paiement : ${payment}.\n\nCe site est une maquette. Pour finaliser votre achat, contactez le +237 622 125 874.`);
   document.getElementById('purchaseModal').style.display = 'none';
   document.getElementById('purchaseForm').reset();
 };
 
 renderProducts();
-&lt;/script&gt;
+</script>
 
-&lt;/body&gt;
-&lt;/html&gt;
+</body>
+</html>
