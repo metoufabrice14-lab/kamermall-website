@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamermall - Marketplace 100% Camerounaise | Achat & Vente en Ligne</title>
-    <meta name="description" content="Kamermall, la marketplace camerounaise. Achetez et vendez produits locaux, électronique, mode, beauté et bien plus en toute sécurité.">
+    <title>Kamermall - Marketplace 100% Camerounaise</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -32,6 +31,13 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--background-light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Header Styles */
@@ -42,12 +48,6 @@
             padding: 8px;
             font-size: 14px;
             font-weight: 500;
-        }
-
-        .announcement-bar a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
         }
 
         header {
@@ -62,7 +62,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 15px 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -112,7 +112,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 15px 0;
         }
 
         .search-container {
@@ -172,13 +172,11 @@
         /* Navigation */
         nav {
             background: var(--primary-dark);
-            padding: 0 5%;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 0;
         }
 
         .nav-item {
@@ -218,11 +216,22 @@
             transition: 0.3s;
         }
 
+        /* Main Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 80px 5%;
             text-align: center;
         }
 
@@ -232,7 +241,7 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             font-weight: 700;
         }
@@ -286,24 +295,10 @@
         }
 
         /* Categories Section */
-        .categories {
-            padding: 60px 5%;
-            background: var(--background);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .category-card {
@@ -334,18 +329,11 @@
             font-size: 1.1rem;
         }
 
-        /* Featured Products */
-        .featured-products {
-            padding: 60px 5%;
-            background: var(--background-light);
-        }
-
+        /* Products Section */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .product-card {
@@ -441,17 +429,10 @@
         }
 
         /* Why Choose Us */
-        .why-choose-us {
-            padding: 60px 5%;
-            background: var(--background);
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .feature-card {
@@ -481,15 +462,13 @@
         footer {
             background: var(--text);
             color: white;
-            padding: 60px 5% 30px;
+            padding: 60px 0 30px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .footer-column h3 {
@@ -559,6 +538,7 @@
         .social-link {
             color: white;
             font-size: 1.2rem;
+            text-decoration: none;
             transition: color 0.3s;
         }
 
@@ -594,13 +574,16 @@
             /* Mobile Menu */
             .hamburger {
                 display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
             }
 
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 250px;
+                width: 280px;
                 height: 100vh;
                 background: var(--primary-dark);
                 flex-direction: column;
@@ -610,6 +593,7 @@
                 transition: right 0.3s ease;
                 box-shadow: -2px 0 10px rgba(0,0,0,0.2);
                 gap: 0;
+                z-index: 999;
             }
 
             .nav-menu.active {
@@ -626,7 +610,6 @@
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
-            /* Animation hamburger -> croix */
             .hamburger.active span:nth-child(1) {
                 transform: rotate(-45deg) translate(-5px, 6px);
             }
@@ -649,12 +632,6 @@
                 justify-content: center;
             }
 
-            .nav-link i {
-                margin-right: 10px;
-                width: 20px;
-                text-align: center;
-            }
-
             .hero h1 {
                 font-size: 2rem;
             }
@@ -674,24 +651,6 @@
             }
         }
 
-        @media (max-width: 480px) {
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
-
         /* Animation */
         @keyframes fadeIn {
             from {
@@ -708,450 +667,378 @@
             animation: fadeIn 0.6s ease-out;
         }
 
-        /* Badge */
-        .badge {
-            background: var(--accent);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        /* Loading */
-        .loading {
+        /* Menu Overlay */
+        .menu-overlay {
             display: none;
-            text-align: center;
-            padding: 20px;
-            color: var(--text-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
         }
 
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
+        .menu-overlay.active {
+            display: block;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Section visibility */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
         }
     </style>
 </head>
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar">
-        🎉 Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande > 10.000 FCFA
+        Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande > 10.000 FCFA
     </div>
 
     <!-- Header -->
     <header>
-        <div class="header-top">
-            <a href="#" class="logo">
-                <i class="fas fa-shopping-bag logo-icon"></i>
-                <div>
-                    <div class="logo-text">KAMERMALL</div>
-                    <div class="logo-tagline">Marketplace 100% Camerounaise</div>
+        <div class="container">
+            <div class="header-top">
+                <a href="#home" class="logo">
+                    <i class="fas fa-shopping-bag logo-icon"></i>
+                    <div>
+                        <div class="logo-text">KAMERMALL</div>
+                        <div class="logo-tagline">Marketplace 100% Camerounaise</div>
+                    </div>
+                </a>
+                <div class="contact-info">
+                    <a href="tel:622125874" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+237 622 125 874</span>
+                    </a>
+                    <a href="mailto:contact@kamermall.cm" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@kamermall.cm</span>
+                    </a>
                 </div>
-            </a>
-            <div class="contact-info">
-                <a href="tel:622125874" class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+237 622 125 874</span>
-                </a>
-                <a href="mailto:contact@kamermall.cm" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@kamermall.cm</span>
-                </a>
+            </div>
+            <div class="header-bottom">
+                <div class="user-actions">
+                    <a href="#account" class="action-btn">
+                        <i class="fas fa-user"></i>
+                        <span>Mon Compte</span>
+                    </a>
+                    <a href="#favorites" class="action-btn">
+                        <i class="fas fa-heart"></i>
+                        <span>Favoris</span>
+                    </a>
+                    <a href="#cart" class="action-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Panier (0)</span>
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="Que recherchez-vous ?">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
-
-        <div class="header-bottom">
-            <div class="user-actions">
-                <a href="#vendor" class="action-btn">
-                    <i class="fas fa-store"></i>
-                    <span>Devenir Vendeur</span>
-                </a>
-                <a href="#login" class="action-btn">
-                    <i class="fas fa-user"></i>
-                    <span>Connexion</span>
-                </a>
-                <a href="#cart" class="action-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Panier (0)</span>
-                </a>
-            </div>
-
-            <div class="search-container">
-                <input type="text" class="search-box" placeholder="Rechercher des produits, catégories, marques..." id="searchInput">
-                <button class="search-btn" onclick="searchProducts()">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Navigation -->
-        <nav>
-            <!-- Hamburger Menu -->
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
-                <li class="nav-item"><a href="#electronics" class="nav-link"><i class="fas fa-mobile-alt"></i> Électronique</a></li>
-                <li class="nav-item"><a href="#fashion" class="nav-link"><i class="fas fa-tshirt"></i> Mode & Accessoires</a></li>
-                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-couch"></i> Maison & Cuisine</a></li>
-                <li class="nav-item"><a href="#beauty" class="nav-link"><i class="fas fa-spa"></i> Beauté & Santé</a></li>
-                <li class="nav-item"><a href="#supermarket" class="nav-link"><i class="fas fa-shopping-basket"></i> Supermarché</a></li>
-                <li class="nav-item"><a href="#phones" class="nav-link"><i class="fas fa-tablet-alt"></i> Téléphones & Tablettes</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content fade-in">
-            <h1>Bienvenue sur Kamermall</h1>
-            <p>La première marketplace camerounaise qui connecte acheteurs et vendeurs locaux. Découvrez des milliers de produits 100% made in Cameroon.</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">
-                    <i class="fas fa-shopping-bag"></i>
-                    Acheter Maintenant
-                </a>
-                <a href="#vendor" class="btn btn-secondary">
-                    <i class="fas fa-store"></i>
-                    Vendre sur Kamermall
-                </a>
-            </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
+                <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
+                <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-list"></i> Catégories</a></li>
+                <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
+                <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <!-- Categories Section -->
-    <section class="categories">
-        <h2 class="section-title">Nos Catégories Populaires</h2>
-        <div class="categories-grid">
-            <a href="#smartphones" class="category-card">
-                <i class="fas fa-mobile-alt category-icon"></i>
-                <div class="category-name">Smartphones</div>
-            </a>
-            <a href="#fashion" class="category-card">
-                <i class="fas fa-tshirt category-icon"></i>
-                <div class="category-name">Mode</div>
-            </a>
-            <a href="#electronics" class="category-card">
-                <i class="fas fa-laptop category-icon"></i>
-                <div class="category-name">Électronique</div>
-            </a>
-            <a href="#home" class="category-card">
-                <i class="fas fa-home category-icon"></i>
-                <div class="category-name">Maison</div>
-            </a>
-            <a href="#beauty" class="category-card">
-                <i class="fas fa-spa category-icon"></i>
-                <div class="category-name">Beauté</div>
-            </a>
-            <a href="#supermarket" class="category-card">
-                <i class="fas fa-shopping-basket category-icon"></i>
-                <div class="category-name">Supermarché</div>
-            </a>
-        </div>
-    </section>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <h2 class="section-title">Produits Populaires</h2>
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Électronique</div>
-                    <h3 class="product-name">Samsung Galaxy A54 5G</h3>
-                    <p class="product-description">Smartphone Android 128GB, Appareil photo 50MP, Batterie 5000mAh</p>
-                    <div class="product-price">189.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="page-section active">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>La marketplace 100% camerounaise</h1>
+                        <p>Achetez et vendez en toute sécurité. Découvrez des milliers de produits locaux et internationaux</p>
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary">
+                                <i class="fas fa-shopping-bag"></i>
+                                Acheter maintenant
+                            </a>
+                            <a href="#sell" class="btn btn-secondary">
+                                <i class="fas fa-store"></i>
+                                Devenir vendeur
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Product 2 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-tshirt"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Mode</div>
-                    <h3 class="product-name">Chemise Africaine Wax Homme</h3>
-                    <p class="product-description">Chemise en wax 100% coton, design authentique camerounais</p>
-                    <div class="product-price">15.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
+        <!-- Products Section -->
+        <section id="products" class="page-section">
+            <div class="container">
+                <h2 class="section-title">Produits Populaires</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Électronique</div>
+                            <h3 class="product-name">Smartphone Samsung Galaxy S21</h3>
+                            <p class="product-description">Smartphone Android avec écran 6.2", 128GB de stockage, appareil photo triple 12MP</p>
+                            <div class="product-price">250.000 FCFA</div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">Ajouter au panier</button>
+                                <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Mode</div>
+                            <h3 class="product-name">Chemise africaine wax homme</h3>
+                            <p class="product-description">Chemise traditionnelle en tissu wax, qualité premium, toutes tailles disponibles</p>
+                            <div class="product-price">15.000 FCFA</div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">Ajouter au panier</button>
+                                <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Alimentation</div>
+                            <h3 class="product-name">Sachet d'huile rouge 1L</h3>
+                            <p class="product-description">Huile de palme rouge naturelle, produite localement, qualité supérieure</p>
+                            <div class="product-price">3.500 FCFA</div>
+                            <div class="product-actions">
+                                <button class="btn-add-cart">Ajouter au panier</button>
+                                <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Product 3 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-blender"></i>
+        <!-- Categories Section -->
+        <section id="categories" class="page-section">
+            <div class="container">
+                <h2 class="section-title">Catégories</h2>
+                <div class="categories-grid">
+                    <a href="#electronics" class="category-card">
+                        <i class="fas fa-laptop category-icon"></i>
+                        <div class="category-name">Électronique</div>
+                    </a>
+                    <a href="#fashion" class="category-card">
+                        <i class="fas fa-tshirt category-icon"></i>
+                        <div class="category-name">Mode & Beauté</div>
+                    </a>
+                    <a href="#home-garden" class="category-card">
+                        <i class="fas fa-home category-icon"></i>
+                        <div class="category-name">Maison & Jardin</div>
+                    </a>
+                    <a href="#food" class="category-card">
+                        <i class="fas fa-utensils category-icon"></i>
+                        <div class="category-name">Alimentation</div>
+                    </a>
+                    <a href="#sports" class="category-card">
+                        <i class="fas fa-futbol category-icon"></i>
+                        <div class="category-name">Sports & Loisirs</div>
+                    </a>
+                    <a href="#automotive" class="category-card">
+                        <i class="fas fa-car category-icon"></i>
+                        <div class="category-name">Auto & Moto</div>
+                    </a>
                 </div>
-                <div class="product-info">
-                    <div class="product-category">Maison</div>
-                    <h3 class="product-name">Mixeur Blender 2L</h3>
-                    <p class="product-description">Mixeur électrique 500W, capacité 2 litres, acier inoxydable</p>
-                    <div class="product-price">25.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="about" class="page-section">
+            <div class="container">
+                <h2 class="section-title">Pourquoi Choisir Kamermall ?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3 class="feature-title">Paiement Sécurisé</h3>
+                        <p class="feature-description">Transactions 100% sécurisées avec protection des acheteurs et vendeurs</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-truck feature-icon"></i>
+                        <h3 class="feature-title">Livraison Rapide</h3>
+                        <p class="feature-description">Livraison express dans les grandes villes du Cameroun</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h3 class="feature-title">Support 24/7</h3>
+                        <p class="feature-description">Notre équipe est disponible pour vous aider à tout moment</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Product 4 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-basket-shopping"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Supermarché</div>
-                    <h3 class="product-name">Pack NDJANG SAUCE TOMATE</h3>
-                    <p class="product-description">Sauce tomate naturelle, 6 bouteilles de 350ml</p>
-                    <div class="product-price">4.500 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
+        <!-- Contact Section -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <h2 class="section-title">Contactez-Nous</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-map-marker-alt feature-icon"></i>
+                        <h3 class="feature-title">Nos Bureaux</h3>
+                        <p class="feature-description">Yaoundé: Rue 1.234, Bastos<br>Douala: Boulevard de la Liberté</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-phone feature-icon"></i>
+                        <h3 class="feature-title">Téléphone</h3>
+                        <p class="feature-description">+237 622 125 874<br>+237 677 894 512</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope feature-icon"></i>
+                        <h3 class="feature-title">Email</h3>
+                        <p class="feature-description">contact@kamermall.cm<br>support@kamermall.cm</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="why-choose-us">
-        <h2 class="section-title">Pourquoi Choisir Kamermall ?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                <h3 class="feature-title">Paiement Sécurisé</h3>
-                <p class="feature-description">Payez en toute sécurité via Mobile Money, Carte Bancaire ou Espèces à la livraison</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-truck feature-icon"></i>
-                <h3 class="feature-title">Livraison Rapide</h3>
-                <p class="feature-description">Livraison express à Yaoundé, Douala et progressivement dans tout le Cameroun</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-handshake feature-icon"></i>
-                <h3 class="feature-title">Support Local</h3>
-                <p class="feature-description">Nous soutenons les commerçants et artisans camerounais</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-undo feature-icon"></i>
-                <h3 class="feature-title">Retour Facile</h3>
-                <p class="feature-description">Retournez vos produits facilement sous 7 jours</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Kamermall</h3>
-                <p>La marketplace de référence au Cameroun, connectant acheteurs et vendeurs depuis 2024.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KAMERMALL</h3>
+                    <p>La première marketplace 100% camerounaise, connectant acheteurs et vendeurs locaux.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-
             <div class="footer-column">
-                <h3>Acheter</h3>
+                <h3>Liens Rapides</h3>
                 <ul class="footer-links">
-                    <li><a href="#products">Tous les produits</a></li>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#products">Produits</a></li>
                     <li><a href="#categories">Catégories</a></li>
-                    <li><a href="#deals">Promotions</a></li>
-                    <li><a href="#new">Nouveautés</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
-                <h3>Vendre</h3>
+                <h3>Service Client</h3>
                 <ul class="footer-links">
-                    <li><a href="#vendor">Devenir vendeur</a></li>
-                    <li><a href="#fees">Frais de commission</a></li>
-                    <li><a href="#guide">Guide du vendeur</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Assistance</h3>
-                <ul class="footer-links">
-                    <li><a href="#help">Centre d'aide</a></li>
-                    <li><a href="#contact">Nous contacter</a></li>
+                    <li><a href="#help">Aide & FAQ</a></li>
                     <li><a href="#shipping">Livraison</a></li>
                     <li><a href="#returns">Retours</a></li>
+                    <li><a href="#terms">Conditions</a></li>
+                    <li><a href="#privacy">Confidentialité</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Newsletter</h3>
                 <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
-                <div class="newsletter-form">
+                <form class="newsletter-form">
                     <input type="email" class="newsletter-input" placeholder="Votre email">
-                    <button class="newsletter-btn">S'inscrire</button>
-                </div>
+                    <button type="submit" class="newsletter-btn">S'inscrire</button>
+                </form>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2024 Kamermall. Tous droits réservés. | Marketplace 100% Camerounaise</p>
-            <p>Téléphone: <a href="tel:622125874" style="color: var(--secondary); text-decoration: none;">+237 622 125 874</a></p>
+            <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Loading Indicator -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Chargement des produits...</p>
-    </div>
-
     <script>
-        // Mobile Menu Functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const body = document.body;
-
-        // Toggle mobile menu
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            body.classList.toggle('no-scroll');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                body.classList.remove('no-scroll');
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.hamburger') && !e.target.closest('.nav-menu')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                body.classList.remove('no-scroll');
-            }
-        });
-
-        // Search Functionality
-        function searchProducts() {
-            const searchTerm = document.getElementById('searchInput').value;
-            if (searchTerm.trim()) {
-                showLoading();
-                // Simulate search delay
-                setTimeout(() => {
-                    hideLoading();
-                    alert(`Recherche pour: ${searchTerm}\n\nCette fonctionnalité sera bientôt disponible !');
-                }
-            }, 800);
-        }
-
-        // Loading Functions
-        function showLoading() {
-            document.getElementById('loading').style.display = 'block';
-        }
-
-        function hideLoading() {
-            document.getElementById('loading').style.display = 'none';
-        }
-
-        // Add to Cart Functionality
-        document.querySelectorAll('.btn-add-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
-                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
-                
-                // Animation feedback
-                this.innerHTML = '<i class="fas fa-check"></i> Ajouté';
-                this.style.background = 'var(--accent)';
-                
-                setTimeout(() => {
-                    this.innerHTML = '<i class="fas fa-cart-plus"></i> Ajouter';
-                this.style.background = 'var(--primary)';
-                alert(`${productName} ajouté au panier !\nPrix: ${productPrice}`);
-                }, 1500);
-            });
-        });
-
-        // Favorite Functionality
-        document.querySelectorAll('.btn-favorite').forEach(button => {
-            button.addEventListener('click', function() {
-                const isActive = this.classList.contains('active');
-                
-                if (isActive) {
-                    this.innerHTML = '<i class="far fa-heart"></i>';
-                    this.classList.remove('active');
-                    this.style.color = 'var(--text-light)';
-                    alert('Produit retiré des favoris');
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const menuOverlay = document.querySelector('.menu-overlay');
+            const sections = document.querySelectorAll('.page-section');
+            
+            // Show home section by default
+            sections.forEach(section => {
+                if (section.id === 'home') {
+                    section.classList.add('active');
                 } else {
-                    this.innerHTML = '<i class="fas fa-heart"></i>';
-                    this.classList.add('active');
-                    this.style.color = 'var(--accent)';
-                    alert('Produit ajouté aux favoris !');
+                    section.classList.remove('active');
                 }
             });
-        });
 
-        // Enter key for search
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchProducts();
-            }
-        });
+            // Navigation click handler
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show target section
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.sc
+            // Mobile menu toggle
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+
+            // Close menu when clicking overlay
+            menuOverlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                this.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    </script>
+</body>
+</html>
