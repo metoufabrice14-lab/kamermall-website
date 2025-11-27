@@ -141,6 +141,7 @@ header {
   transition: 0.3s;
 }
 
+/* Navigation styles */
 nav {
   background-color: #fff;
   display: none;
@@ -214,6 +215,7 @@ nav {
     z-index: 15;
   }
 }
+/* Sections */
 .page-section {
   display: none;
   padding: 40px 20px;
@@ -294,6 +296,31 @@ footer {
   color: #fff;
   cursor: pointer;
 }
+
+/* Categories section style */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+.category-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(25% - 20px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+.category-card:hover {
+  transform: translateY(-5px);
+}
+.category-card i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #e60000;
+}
 </style>
 </head>
 <body>
@@ -360,8 +387,8 @@ footer {
   <div class="container">
     <ul class="nav-menu">
       <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
+      <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-tags"></i> Catégories</a></li>
       <li class="nav-item"><a href="#products" class="nav-link"><i class="fas fa-box"></i> Produits</a></li>
-      <li class="nav-item"><a href="#categories" class="nav-link"><i class="fas fa-list"></i> Catégories</a></li>
       <li class="nav-item"><a href="#sellers" class="nav-link"><i class="fas fa-store"></i> Vendeurs</a></li>
       <li class="nav-item"><a href="#promotions" class="nav-link"><i class="fas fa-tag"></i> Promotions</a></li>
       <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a></li>
@@ -373,14 +400,36 @@ footer {
 <!-- Overlay menu -->
 <div class="menu-overlay"></div>
 
-<!-- Sections principales (exemples) -->
+<!-- Sections principales -->
 <div id="home" class="page-section active">
   <h1>Bienvenue sur Kamermall</h1>
 </div>
-<div id="products" class="page-section">
-  <h1>Nos Produits</h1>
+<div id="categories" class="page-section">
+  <h2>Nos Catégories</h2>
+  <div class="categories">
+    <div class="category-card">
+      <i class="fas fa-laptop"></i>
+      <h3>Électronique</h3>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-tshirt"></i>
+      <h3>Vêtements</h3>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-home"></i>
+      <h3>Maison</h3>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-car"></i>
+      <h3>Automobile</h3>
+    </div>
+    <!-- Ajoutez d'autres catégories si besoin -->
+  </div>
 </div>
-<!-- Ajoutez d'autres sections selon besoin -->
+<div id="products" class="page-section">
+  <h2>Nos Produits</h2>
+</div>
+<!-- Ajoutez d'autres sections si besoin -->
 
 <!-- Pied de page -->
 <footer>
@@ -401,8 +450,8 @@ footer {
       <h3>Liens Rapides</h3>
       <ul class="footer-links">
         <li><a href="#home">Accueil</a></li>
-        <li><a href="#products">Produits</a></li>
         <li><a href="#categories">Catégories</a></li>
+        <li><a href="#products">Produits</a></li>
         <li><a href="#about">À propos</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -478,7 +527,7 @@ footer {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').slice(1);
-        // Gestion de l'affichage des sections si nécessaire
+        // Gestion de l'affichage des sections
         document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
         const targetSection = document.getElementById(targetId);
         if (targetSection) targetSection.classList.add('active');
