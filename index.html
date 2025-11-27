@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kamermall - Marketplace 100% Camerounaise</title>
+  <title>Kamermall - Marketplace Camerounais</title>
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -121,7 +121,7 @@
     /* Modal paiement */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 40; }
     .modal-overlay.active { display: flex; }
-    .modal { background: #fff; border-radius: 12px; width: min(520px, 92%); padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+    .modal { background: #fff; border-radius: 12px; width: min(640px, 92%); padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
     .modal h3 { margin-top: 0; }
     .payment-option { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; }
     .payment-option.active { border-color: var(--red); background: #fff6f6; }
@@ -283,7 +283,7 @@
 
         <!-- Produit 2 -->
         <div class="product-card" data-id="p2" data-title="T-shirt Casual Masculin" data-category="Vêtements" data-price="5500" data-rating="4.2" data-tags="vetements,tshirt" role="listitem" aria-label="T-shirt Casual Masculin">
-          <div class="product-image"><i class="fas fa-tshirt"></i></div>
+          <div className="product-image"><i class="fas fa-tshirt"></i></div>
           <div class="product-title">T-shirt Casual Masculin</div>
           <div class="rating" aria-label="Note 4.2 sur 5">★★★★☆</div>
           <div class="product-price">5 500 FCFA</div>
@@ -387,7 +387,7 @@
         <h3>Service Client</h3>
         <ul class="footer-links">
           <li><a href="#help">Aide & FAQ</a></li>
-          <li><a href="#shipping">Livraison</a></li>
+          <li><a href="#shipping"> livraison</a></li>
           <li><a href="#returns">Retours</a></li>
           <li><a href="#terms">Conditions</a></li>
           <li><a href="#privacy">Confidentialité</a></li>
@@ -403,7 +403,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
+      <p>&copy; 2025 Kamermall. Tous droits réservés.</p>
     </div>
   </footer>
 
@@ -414,7 +414,7 @@
       <p>Sélectionnez votre moyen de paiement:</p>
 
       <div id="momo-option" class="payment-option" data-method="momo" tabindex="0" role="button" aria-label="Paiement MoMo">
-        <div class="payment-icon"><i class="fab fa-mizuni" aria-hidden="true"></i></div>
+        <div class="payment-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
         <div><strong>Mobile Money (MoMo)</strong><div style="font-size:12px;color:#555;"> MTN Momo / MTN ou Orange Money</div></div>
       </div>
 
@@ -425,7 +425,7 @@
 
       <div id="card-option" class="payment-option" data-method="card" tabindex="0" role="button" aria-label="Paiement par Carte Bancaire">
         <div class="payment-icon"><i class="fas fa-credit-card" aria-hidden="true"></i></div>
-        <div><strong>Carte Bancaire</strong><div style="font-size:12px;color:#555;">Paiement par carte (Visa/Mc)</div></div>
+        <div><strong>Carte Bancaire</strong><div style="font-size:12px;color:#555;">Paiement par carte (Visa/Mastercard)</div></div>
       </div>
 
       <div id="cod-option" class="payment-option" data-method="cod" tabindex="0" role="button" aria-label="Paiement à la livraison">
@@ -434,8 +434,12 @@
       </div>
 
       <div id="paypal-option" class="payment-option" data-method="paypal" tabindex="0" role="button" aria-label="Paiement PayPal">
-        <div class="payment-icon"><i class="fab fa PayPal" aria-hidden="true" style="font-family: 'Font Awesome 5 Brands';"></i></div>
+        <div class="payment-icon"><i class="fab fa-paypal" aria-hidden="true"></i></div>
         <div><strong>PayPal</strong><div style="font-size:12px;color:#555;">Paiement via PayPal</div></div>
+      </div>
+
+      <div id="order-summary" style="margin-top:12px; padding: 8px; border: 1px solid #eee; border-radius: 8px;">
+        <!-- Récapitulatif inséré dynamiquement -->
       </div>
 
       <div class="hidden" id="card-form-container" aria-live="polite" style="margin-top:10px;">
@@ -506,6 +510,9 @@
     const cardCvvInput = document.getElementById('card-cvv');
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
+    const orderSummaryEl = document.getElementById('order-summary');
+    const orderCardFormContainer = document.getElementById('card-form-container');
+    const totalDisplay = document.createElement('div'); // pour afficher le total dans le modal
 
     // État des filtres
     let cart = [];
@@ -515,6 +522,7 @@
     let maxPrice = 100000;
     let currentSort = 'popularity';
     let showCardForm = false;
+    let selectedMethod = '';
 
     // Helpers
     function formatPrice(n) {
@@ -522,14 +530,17 @@
     }
 
     function renderRatingStars(rating) {
-      // rating: 0-5 avec ou sans décimales
       const full = Math.floor(rating);
       const half = rating - full >= 0.5;
       let s = '★★★★★'.slice(0, full);
       if (half) s += '☆';
-      // Pad to 5
       while (s.length < 5) s += '☆';
       return s;
+    }
+
+    // Carte totals
+    function cartTotal() {
+      return cart.reduce((sum, it) => sum + (typeof it.price === 'number' ? it.price : parseInt(it.price || 0, 10)), 0);
     }
 
     // Filtrage des produits
@@ -558,7 +569,6 @@
           const pb = parseInt(b.dataset.price, 10);
           return currentSort === 'price-asc' ? pa - pb : pb - pa;
         });
-        // Reorder DOM
         itemsArray.forEach(item => grid.appendChild(item));
       } else if (currentSort === 'rating-desc') {
         itemsArray.sort((a, b) => {
@@ -586,7 +596,6 @@
         if (cat === 'all') card.classList.remove('active');
         else card.classList.toggle('active', c === cat.toLowerCase());
       });
-      // Si cat = 'all', on retire les états
       if (cat === 'all') {
         categoryCards.forEach(card => card.classList.remove('active'));
       }
@@ -596,15 +605,19 @@
     // Ouverture du modal paiement
     function openPaymentModal() {
       paymentStatus.textContent = '';
-      // réinitialiser sélection
+      selectedMethod = '';
       [momoOption, omOption, cardOption, codOption, paypalOption].forEach(el => el.classList.remove('active'));
       payButton.disabled = true;
-      // masquer formulaire carte tant que non nécessaire
-      cardFormContainer.classList.add('hidden');
+      orderSummaryEl.innerHTML = ''; // reset
+      // Montant total et récap
+      renderOrderSummary();
+      cardFormContainer?.classList.add('hidden');
       showCardForm = false;
       paymentModal.classList.add('active');
       paymentModal.setAttribute('aria-hidden', 'false');
       overlay.style.display = 'block';
+      // désactiver le scroll du corps
+      document.body.style.overflow = 'hidden';
     }
 
     function closePaymentModal() {
@@ -612,24 +625,39 @@
       paymentModal.setAttribute('aria-hidden', 'true');
       overlay.style.display = 'none';
       screenOverlay.style.display = 'none';
+      document.body.style.overflow = '';
       // reset card form fields
-      cardNumberInput && (cardNumberInput.value = '');
-      cardNameInput && (cardNameInput.value = '');
-      cardExpiryInput && (cardExpiryInput.value = '');
-      cardCvvInput && (cardCvvInput.value = '');
+      if (cardNumberInput) cardNumberInput.value = '';
+      if (cardNameInput) cardNameInput.value = '';
+      if (cardExpiryInput) cardExpiryInput.value = '';
+      if (cardCvvInput) cardCvvInput.value = '';
+    }
+
+    function renderOrderSummary() {
+      const total = cartTotal();
+      const lines = cart.map(it => `<div>${it.title} - ${formatPrice(it.price)}</div>`).join('');
+      orderSummaryEl.innerHTML = `
+        <strong>Récapitulatif de la commande</strong>
+        <div style="margin-top:6px; font-size:13px; color:#555;">
+          ${lines || '<em>Aucun article</em>'}
+        </div>
+        <div style="margin-top:6px; font-weight:600;">Total: ${formatPrice(total)}</div>
+      `;
+      // Mettre le total dans un affichage interne si besoin
     }
 
     function selectPaymentMethod(el) {
       [momoOption, omOption, cardOption, codOption, paypalOption].forEach(o => o.classList.remove('active'));
       el.classList.add('active');
+      selectedMethod = el.dataset.method;
       // montrer formulaire carte si carte bancaire
       if (el === cardOption) {
-        cardFormContainer.classList.remove('hidden');
+        cardFormContainer?.classList.remove('hidden');
         showCardForm = true;
         // activer le bouton si les champs non vides
         validateCardForm();
       } else {
-        cardFormContainer.classList.add('hidden');
+        cardFormContainer?.classList.add('hidden');
         showCardForm = false;
       }
       payButton.disabled = false;
@@ -657,19 +685,69 @@
     if (cardExpiryInput) cardExpiryInput.addEventListener('input', validateCardForm);
     if (cardCvvInput) cardCvvInput.addEventListener('input', validateCardForm);
 
-    payButton.addEventListener('click', () => {
-      const method = (document.querySelector('.payment-option.active')?.dataset?.method) || '';
+    // API: process payment (réelle mais prête à être remplacée)
+    async function processPayment(method, amount, items) {
+      const payload = {
+        method,
+        amount,
+        currency: 'XOF',
+        items,
+        orderId: 'ORD-' + Date.now()
+      };
+
+      // Exemple d'appel à votre backend. Remplacez l'URL par votre endpoint réel.
+      const apiUrl = '/api/payments';
+
+      try {
+        const resp = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        // Si votre API renvoie un JSON avec { success: true, transactionId, message }
+        if (!resp.ok) {
+          const err = await resp.text();
+          return { success: false, message: 'Erreur réseau: ' + (err || resp.statusText) };
+        }
+        const data = await resp.json();
+        if (data && data.success) {
+          return { success: true, data };
+        } else {
+          return { success: false, message: data?.message || 'Échec du paiement' };
+        }
+      } catch (e) {
+        return { success: false, message: 'Erreur de connexion: ' + e.message };
+      }
+    }
+
+    payButton.addEventListener('click', async () => {
+      const method = selectedMethod;
       if (!method) return;
+
+      // Définir résultats affichés
       paymentStatus.textContent = `Paiement en cours via ${method.toUpperCase()}...`;
-      // Simulation
-      setTimeout(() => {
+      payButton.disabled = true;
+
+      // Si carte bancaire, collectez les infos supplémentaires (optionnel, selon votre backend)
+      const amount = cartTotal();
+      const items = cart.map(it => ({ title: it.title, price: it.price }));
+
+      // Appel API réel
+      const result = await processPayment(method, amount, items);
+
+      if (result.success) {
         paymentStatus.textContent = 'Paiement réussi ! Commande confirmée.';
         // vider panier
         cart = [];
         cartCountEl.style.display = 'none';
         cartCountEl.textContent = '0';
-        closePaymentModal();
-      }, 1200);
+        // Fermer le modal après un court délai et afficher un message
+        setTimeout(() => closePaymentModal(), 900);
+      } else {
+        paymentStatus.textContent = 'Échec du paiement: ' + (result.message || 'Erreur');
+        payButton.disabled = false;
+      }
     });
 
     cancelPay.addEventListener('click', () => closePaymentModal());
@@ -678,8 +756,7 @@
     function addToCart(productCard) {
       const title = productCard.dataset.title;
       const priceValue = parseInt(productCard.dataset.price || '0', 10) || 0;
-      const item = { title, price: priceValue };
-      cart.push(item);
+      cart.push({ title, price: priceValue });
       cartCountEl.style.display = 'inline-block';
       cartCountEl.textContent = cart.length;
     }
@@ -728,7 +805,6 @@
         e.preventDefault();
         const targetId = link.getAttribute('href').slice(1);
         showSection(targetId);
-        // Fermer menu si ouvert sur mobile
         if (mainNav.classList.contains('active')) toggleMobileMenu(false);
       });
     });
@@ -737,7 +813,6 @@
       document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
       const target = document.getElementById(id);
       if (target) target.classList.add('active');
-      // scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -755,7 +830,6 @@
     });
 
     // Catégories dynamiques dans la page (barre de catégories)
-    // Délimiter les événements sur chaque bouton catégorie
     categoryCards.forEach(card => {
       card.addEventListener('click', () => {
         const cat = (card.dataset.category || 'all').toLowerCase();
@@ -787,19 +861,15 @@
       cookieBanner.style.display = 'none';
       localStorage.setItem('cookiesAccepted', 'true');
     });
-    // Init cookies: si déjà accepté
     if (localStorage.getItem('cookiesAccepted') === 'true') {
       cookieBanner.style.display = 'none';
     }
 
     // Sections et démarrage
-    const homeSection = document.getElementById('home');
     showSection('home');
-    // Appel initial du filtre pour afficher tout
     filterProducts();
 
     // Initialisation des barres cat affichées
-    // Ajoute les catégories dans la liste principale (optionnel)
     const categoriesList = document.getElementById('categories-list');
     const baseCategories = ['Électronique', 'Vêtements', 'Maison', 'Automobile'];
     baseCategories.forEach(cat => {
@@ -807,7 +877,7 @@
       el.className = 'category-card';
       el.style.cursor = 'default';
       el.innerHTML = `<i class="fas fa-tag"></i><div style="font-size:12px">${cat}</div>`;
-      el.style.display = 'none'; // visuel optionnel (peut être activé si voulu)
+      el.style.display = 'none';
       categoriesList.appendChild(el);
     });
   </script>
