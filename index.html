@@ -1,615 +1,255 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- MÉTADONNÉES OPTIMISÉES -->
-    <title>Kamermall - Marketplace 100% Camerounaise | Achat & Vente en Ligne</title>
-    <meta name="description" content="🛍️ Kamermall - La marketplace camerounaise N°1. Achetez et vendez produits locaux, électronique, mode, beauté. Paiements Mobile Money sécurisés. Livraison Yaoundé & Douala.">
-    <meta name="keywords" content="kamermall, marketplace cameroun, ecommerce cameroun, acheter en ligne cameroun, vente en ligne, mobile money, douala, yaoundé, produits locaux">
-    <meta name="author" content="Kamermall Team">
-    <meta name="robots" content="index, follow">
-    
-    <!-- OPEN GRAPH (Pour les réseaux sociaux) -->
-    <meta property="og:title" content="Kamermall - Marketplace 100% Camerounaise">
-    <meta property="og:description" content="La plateforme e-commerce de référence au Cameroun. Achetez et vendez en toute sécurité.">
-    <meta property="og:image" content="images/logo-kamermall.png">
-    <meta property="og:url" content="https://metoufabrice14-lab.github.io/kamermall-website/">
-    <meta property="og:type" content="website">
-    
-    <!-- FAVICON (Optionnel mais recommandé) -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamermall - Marketplace 100% Camerounaise | Achat & Vente en Ligne</title>
-    <meta name="description" content="Kamermall, la marketplace camerounaise. Achetez et vendez produits locaux, électronique, mode, beauté et bien plus en toute sécurité.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Kamermall - Votre Marketplace de Confiance</title>
     <style>
+        /* ===== RESET CSS ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #00A651;
-            --primary-dark: #008040;
-            --secondary: #FFD700;
-            --accent: #FF6B00;
-            --text: #333333;
-            --text-light: #666666;
-            --background: #FFFFFF;
-            --background-light: #F8F9FA;
-            --border: #E0E0E0;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --radius: 8px;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--background-light);
+            color: #333;
+            background: #f8f9fa;
         }
 
-        /* Header Styles */
-        .announcement-bar {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .announcement-bar a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        header {
-            background: var(--background);
-            box-shadow: var(--shadow);
-            position: sticky;
+        /* ===== HEADER & NAVIGATION ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
 
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .logo-tagline {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .contact-item i {
-            color: var(--primary);
-        }
-
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-        }
-
-        .search-container {
-            display: flex;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 20px;
-        }
-
-        .search-box {
-            flex: 1;
-            padding: 12px 20px;
-            border: 2px solid var(--primary);
-            border-radius: var(--radius) 0 0 var(--radius);
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .search-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .search-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .user-actions {
-            display: flex;
-            gap: 20px;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: var(--radius);
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .action-btn:hover {
-            background: var(--background-light);
-            color: var(--primary);
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--primary-dark);
-            padding: 0 5%;
+        .nav-brand img {
+            height: 40px;
+            width: auto;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 0;
+            gap: 30px;
         }
 
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            display: block;
-            color: white;
+        .nav-menu a {
             text-decoration: none;
-            padding: 15px 20px;
-            transition: background 0.3s;
+            color: #333;
             font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 5px;
         }
 
-        .nav-link:hover {
-            background: var(--primary);
+        .nav-menu a:hover {
+            color: #00704A;
+            background: #f0f0f0;
         }
 
-        .nav-link i {
-            margin-right: 8px;
+        /* Menu Hamburger (caché sur desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== SECTIONS GENERALES ===== */
+        section {
+            padding: 80px 20px;
+            margin-top: 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, #00704A, #00A86B);
             color: white;
-            padding: 80px 5%;
             text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 120px 20px !important;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            font-weight: 700;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--text);
-        }
-
-        .btn-primary:hover {
-            background: #FFC400;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
+            display: inline-block;
             background: white;
-            color: var(--primary);
+            color: #00704A;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s;
         }
 
-        /* Categories Section */
-        .categories {
-            padding: 60px 5%;
-            background: var(--background);
+        .btn:hover {
+            transform: translateY(-3px);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
+        /* Section Catégories */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .category-card {
-            background: var(--background);
-            border-radius: var(--radius);
-            padding: 30px 20px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
         .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
         }
 
-        .category-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+        .category-card h3 {
+            color: #00704A;
+            margin: 20px 0 10px;
         }
 
-        .category-name {
-            font-weight: 600;
-            font-size: 1.1rem;
+        /* Section À Propos */
+        #apropos {
+            background: white;
         }
 
-        /* Featured Products */
-        .featured-products {
-            padding: 60px 5%;
-            background: var(--background-light);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
+        /* Section Contact */
+        .contact-form {
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .product-card {
-            background: var(--background);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: var(--background-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-category {
-            color: var(--primary);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .product-name {
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .product-description {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-add-cart {
-            flex: 1;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 600;
-        }
-
-        .btn-add-cart:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-favorite {
-            background: var(--background-light);
-            border: 1px solid var(--border);
-            color: var(--text-light);
-            padding: 10px;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-favorite:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* Why Choose Us */
-        .why-choose-us {
-            padding: 60px 5%;
-            background: var(--background);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .form-group {
             margin-bottom: 20px;
         }
 
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text);
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .feature-description {
-            color: var(--text-light);
-            line-height: 1.6;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
         }
 
         /* Footer */
         footer {
-            background: var(--text);
+            background: #333;
             color: white;
-            padding: 60px 5% 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-column h3 {
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #CCCCCC;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: var(--radius);
-            outline: none;
-        }
-
-        .newsletter-btn {
-            background: var(--secondary);
-            color: var(--text);
-            border: none;
-            padding: 12px 20px;
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .footer-bottom {
             text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid #444444;
-            color: #999999;
-            font-size: 0.9rem;
+            padding: 30px 20px;
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-            justify-content: center;
-        }
-
-        .social-link {
-            color: white;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-link:hover {
-            color: var(--secondary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+        /* ===== VERSION MOBILE ===== */
+        @media screen and (max-width: 768px) {
+            /* Correction du header pour mobile */
+            body {
+                padding-top: 70px;
             }
-
-            .header-bottom {
-                flex-direction: column;
-                gap: 15px;
+            
+            /* Afficher le hamburger */
+            .hamburger {
+                display: flex;
             }
-
-            .search-container {
-                width: 100%;
-                margin: 10px 0;
-            order: 2;
-            max-width: none;
-            margin: 0;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            order: 3;
-            width: 100%;
-            max-width: none;
-            margin: 15px 0;
-            order: 2;
-            width: 100%;
+            
+            /* Cacher le menu normal */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
                 margin: 15px 0;
             }
-
-            .user-actions {
-                order: 1;
-                width: 100%;
-                justify-content: center;
+            
+            .nav-menu a {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+                display: block;
+                width: 200px;
+                text-align: center;
+            }
+            
+            /* Animation hamburger -> croix */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
             }
 
-            .nav-menu {
-                flex-direction: column;
-            }
-
+            /* Ajustements texte mobile */
             .hero h1 {
                 font-size: 2rem;
             }
@@ -618,504 +258,183 @@
                 font-size: 1rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
+            /* Sections padding réduit sur mobile */
+            section {
+                padding: 50px 15px;
             }
 
-            .btn {
-                width: 200px;
-                justify-content: center;
+            .hero {
+                padding: 80px 15px !important;
             }
 
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            align-items: center;
-            width: 100%;
-            }
-
-            .contact-item {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
+            /* Grille 1 colonne sur mobile */
             .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .products-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
+                gap: 20px;
             }
         }
 
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        /* Correction pour très petits écrans */
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .nav-menu {
+                width: 100%;
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Badge */
-        .badge {
-            background: var(--accent);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        /* Loading */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            color: var(--text-light);
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Empêcher le zoom sur les inputs iOS */
+        @media screen and (max-width: 768px) {
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            textarea {
+                font-size: 16px !important;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        🎉 Lancement officiel ! Livraison gratuite à Yaoundé et Douala pour toute commande > 10.000 FCFA
-    </div>
-
-    <!-- Header -->
+    <!-- Header avec Navigation -->
     <header>
-        <div class="header-top">
-            <a href="#" class="logo">
-                <i class="fas fa-shopping-bag logo-icon"></i>
-                <div>
-                    <div class="logo-text">KAMERMALL</div>
-                    <div class="logo-tagline">Marketplace 100% Camerounaise</div>
-                </div>
-            </a>
-            <div class="contact-info">
-                <a href="tel:622125874" class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+237 622 125 874</span>
-                </a>
-                <a href="mailto:contact@kamermall.cm" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@kamermall.cm</span>
-                </a>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="images/logo-kamermall.png" alt="Kamermall Logo">
             </div>
-        </div>
-
-        <div class="header-bottom">
-            <div class="user-actions">
-                <a href="#vendor" class="action-btn">
-                    <i class="fas fa-store"></i>
-                    <span>Devenir Vendeur</span>
-                </a>
-                <a href="#login" class="action-btn">
-                    <i class="fas fa-user"></i>
-                    <span>Connexion</span>
-                </a>
-                <a href="#cart" class="action-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Panier (0)</span>
-                </a>
+            
+            <!-- Menu Hamburger -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-
-            <div class="search-container">
-                <input type="text" class="search-box" placeholder="Rechercher des produits, catégories, marques..." id="searchInput">
-                <button class="search-btn" onclick="searchProducts()">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Navigation -->
-        <nav>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i> Accueil</a></li>
-                <li class="nav-item"><a href="#electronics" class="nav-link"><i class="fas fa-mobile-alt"></i> Électronique</a></li>
-                <li class="nav-item"><a href="#fashion" class="nav-link"><i class="fas fa-tshirt"></i> Mode & Accessoires</a></li>
-                <li class="nav-item"><a href="#home" class="nav-link"><i class="fas fa-couch"></i> Maison & Cuisine</a></li>
-                <li class="nav-item"><a href="#beauty" class="nav-link"><i class="fas fa-spa"></i> Beauté & Santé</a></li>
-                <li class="nav-item"><a href="#supermarket" class="nav-link"><i class="fas fa-shopping-basket"></i> Supermarché</a></li>
-                <li class="nav-item"><a href="#phones" class="nav-link"><i class="fas fa-tablet-alt"></i> Téléphones & Tablettes</a></li>
+            
+            <!-- Menu Navigation -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#electronique">Électronique</a></li>
+                <li><a href="#mode">Mode</a></li>
+                <li><a href="#beaute">Beauté</a></li>
+                <li><a href="#maison">Maison</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content fade-in">
+    <!-- Section Hero / Accueil -->
+    <section id="accueil" class="hero">
+        <div class="container">
             <h1>Bienvenue sur Kamermall</h1>
-            <p>La première marketplace camerounaise qui connecte acheteurs et vendeurs locaux. Découvrez des milliers de produits 100% made in Cameroon.</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">
-                    <i class="fas fa-shopping-bag"></i>
-                    Acheter Maintenant
-                </a>
-                <a href="#vendor" class="btn btn-secondary">
-                    <i class="fas fa-store"></i>
-                    Vendre sur Kamermall
-                </a>
-            </div>
+            <p>Découvrez notre sélection exclusive de produits électroniques, mode, beauté et maison aux meilleurs prix.</p>
+            <a href="#categories" class="btn">Découvrir nos produits</a>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
-        <h2 class="section-title">Nos Catégories Populaires</h2>
-        <div class="categories-grid">
-            <a href="#smartphones" class="category-card">
-                <i class="fas fa-mobile-alt category-icon"></i>
-                <div class="category-name">Smartphones</div>
-            </a>
-            <a href="#fashion" class="category-card">
-                <i class="fas fa-tshirt category-icon"></i>
-                <div class="category-name">Mode</div>
-            </a>
-            <a href="#electronics" class="category-card">
-                <i class="fas fa-laptop category-icon"></i>
-                <div class="category-name">Électronique</div>
-            </a>
-            <a href="#home" class="category-card">
-                <i class="fas fa-home category-icon"></i>
-                <div class="category-name">Maison</div>
-            </a>
-            <a href="#beauty" class="category-card">
-                <i class="fas fa-spa category-icon"></i>
-                <div class="category-name">Beauté</div>
-            </a>
-            <a href="#supermarket" class="category-card">
-                <i class="fas fa-shopping-basket category-icon"></i>
-                <div class="category-name">Supermarché</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <h2 class="section-title">Produits Populaires</h2>
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-mobile-alt"></i>
+    <!-- Section Catégories -->
+    <section id="categories">
+        <div class="container">
+            <h2>Nos Catégories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>Électronique</h3>
+                    <p>Smartphones, ordinateurs, accessoires tech</p>
                 </div>
-                <div class="product-info">
-                    <div class="product-category">Électronique</div>
-                    <h3 class="product-name">Samsung Galaxy A54 5G</h3>
-                    <p class="product-description">Smartphone Android 128GB, Appareil photo 50MP, Batterie 5000mAh</p>
-                    <div class="product-price">189.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
+                <div class="category-card">
+                    <h3>Mode</h3>
+                    <p>Vêtements, chaussures, accessoires tendance</p>
                 </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-tshirt"></i>
+                <div class="category-card">
+                    <h3>Beauté</h3>
+                    <p>Cosmétiques, soins, parfums</p>
                 </div>
-                <div class="product-info">
-                    <div class="product-category">Mode</div>
-                    <h3 class="product-name">Chemise Africaine Wax Homme</h3>
-                    <p class="product-description">Chemise en wax 100% coton, design authentique camerounais</p>
-                    <div class="product-price">15.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-blender"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Maison</div>
-                    <h3 class="product-name">Mixeur Blender 2L</h3>
-                    <p class="product-description">Mixeur électrique 500W, capacité 2 litres, acier inoxydable</p>
-                    <div class="product-price">25.000 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-basket-shopping"></i>
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Supermarché</div>
-                    <h3 class="product-name">Pack NDJANG SAUCE TOMATE</h3>
-                    <p class="product-description">Sauce tomate naturelle, 6 bouteilles de 350ml</p>
-                    <div class="product-price">4.500 FCFA</div>
-                    <div class="product-actions">
-                        <button class="btn-add-cart">
-                            <i class="fas fa-cart-plus"></i>
-                            Ajouter
-                        </button>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
+                <div class="category-card">
+                    <h3>Maison</h3>
+                    <p>Décoration, électroménager, jardin</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="why-choose-us">
-        <h2 class="section-title">Pourquoi Choisir Kamermall ?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                <h3 class="feature-title">Paiement Sécurisé</h3>
-                <p class="feature-description">Payez en toute sécurité via Mobile Money, Carte Bancaire ou Espèces à la livraison</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-truck feature-icon"></i>
-                <h3 class="feature-title">Livraison Rapide</h3>
-                <p class="feature-description">Livraison express à Yaoundé, Douala et progressivement dans tout le Cameroun</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-handshake feature-icon"></i>
-                <h3 class="feature-title">Support Local</h3>
-                <p class="feature-description">Nous soutenons les commerçants et artisans camerounais</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-undo feature-icon"></i>
-                <h3 class="feature-title">Retour Facile</h3>
-                <p class="feature-description">Retournez vos produits facilement sous 7 jours</p>
-            </div>
+    <!-- Section À Propos -->
+    <section id="apropos">
+        <div class="container">
+            <h2>À Propos de Kamermall</h2>
+            <p>Kamermall est votre marketplace de confiance, offrant une large gamme de produits de qualité à des prix compétitifs.</p>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Kamermall</h3>
-                <p>La marketplace de référence au Cameroun, connectant acheteurs et vendeurs depuis 2024.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h3>Acheter</h3>
-                <ul class="footer-links">
-                    <li><a href="#products">Tous les produits</a></li>
-                    <li><a href="#categories">Catégories</a></li>
-                    <li><a href="#deals">Promotions</a></li>
-                    <li><a href="#new">Nouveautés</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Vendre</h3>
-                <ul class="footer-links">
-                    <li><a href="#vendor">Devenir vendeur</a></li>
-                    <li><a href="#fees">Frais de commission</a></li>
-                    <li><a href="#guide">Guide du vendeur</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Assistance</h3>
-                <ul class="footer-links">
-                    <li><a href="#help">Centre d'aide</a></li>
-                    <li><a href="#contact">Nous contacter</a></li>
-                    <li><a href="#shipping">Livraison</a></li>
-                    <li><a href="#returns">Retours</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Newsletter</h3>
-                <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
-                <div class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Votre email">
-                    <button class="newsletter-btn">S'inscrire</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2024 Kamermall. Tous droits réservés. | Marketplace 100% Camerounaise</p>
-            <p>Téléphone: <a href="tel:622125874" style="color: var(--secondary); text-decoration: none;">+237 622 125 874</a></p>
+        <div class="container">
+            <p>&copy; 2024 Kamermall. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Loading Indicator -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Chargement des produits...</p>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        // Search Functionality
-        function searchProducts() {
-            const searchTerm = document.getElementById('searchInput').value;
-            if (searchTerm.trim()) {
-                showLoading();
-                // Simulate search delay
-                setTimeout(() => {
-                    hideLoading();
-                    alert(`Recherche pour: ${searchTerm}\n\nCette fonctionnalité sera bientôt disponible !');
-            }
-        }
+        // Menu Hamburger
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
 
-        // Loading Functions
-        function showLoading() {
-            document.getElementById('loading').style.display = 'block';
-        }
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-        function hideLoading() {
-            document.getElementById('loading').style.display = 'none';
-        }
-
-        // Add to Cart Functionality
-        document.querySelectorAll('.btn-add-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
-                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
-                
-                // Animation feedback
-                this.innerHTML = '<i class="fas fa-check"></i> Ajouté';
-                this.style.background = 'var(--accent)';
-                
-                setTimeout(() => {
-                    this.innerHTML = '<i class="fas fa-cart-plus"></i> Ajouter';
-                this.style.background = 'var(--primary)';
-                alert(`${productName} ajouté au panier !\nPrix: ${productPrice}`);
-                }, 1500);
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
 
-        // Favorite Functionality
-        document.querySelectorAll('.btn-favorite').forEach(button => {
-            button.addEventListener('click', function() {
-                const isActive = this.classList.contains('active');
-                
-                if (isActive) {
-                    this.innerHTML = '<i class="far fa-heart"></i>';
-                this.classList.remove('active');
-                this.style.color = 'var(--text-light)';
-                alert('Produit retiré des favoris');
-                } else {
-                    this.innerHTML = '<i class="fas fa-heart"></i>';
-                this.classList.add('active');
-                this.style.color = 'var(--accent)';
-                alert('Produit ajouté aux favoris !');
-                }
-            });
-        });
-
-        // Enter key for search
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchProducts();
+        // Fermer le menu si on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar') && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scroll pour les liens d'ancrage
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-
-        // Mobile menu toggle (for future enhancement)
-        function toggleMobileMenu() {
-            const navMenu = document.querySelector('.nav-menu');
-            navMenu.classList.toggle('active');
-        }
-
-        console.log('🚀 Kamermall - Marketplace Camerounaise chargée avec succès !');
-        console.log('📞 Contact: +237 622 125 874');
     </script>
 </body>
-
 </html>
